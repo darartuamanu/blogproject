@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('auth'); // Apply 'auth' middleware to all methods
+        
     }
     // Index method to display posts
     public function index()
