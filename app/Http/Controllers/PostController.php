@@ -18,7 +18,10 @@ class PostController extends Controller
         return view('posts.index', ['posts' => $posts]);
     }
 
+
+
     
+
 
     // Create method to show the create post form
     public function create()
