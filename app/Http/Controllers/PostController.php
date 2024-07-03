@@ -9,7 +9,7 @@ class PostController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth'); // Apply 'auth' middleware to all methods
+        // $this->middleware('auth'); // Apply 'auth' middleware to all methods
     }
     // Index method to display posts
     public function index()
@@ -17,7 +17,6 @@ class PostController extends Controller
         $posts = Post::orderBy('created_at', 'desc')->get();
         return view('posts.index', ['posts' => $posts]);
     }
-
 
 
     
