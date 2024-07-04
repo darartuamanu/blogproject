@@ -31,3 +31,21 @@
     
 </div>
 @endsection
+<h1>Add New Detail</h1>
+    <form action="{{ route('details.store') }}" method="POST">
+        @csrf
+        <div>
+            <label for="blog_id">Blog ID</label>
+            <input type="number" name="blog_id" id="blog_id" required>
+        </div>
+        <div>
+            <label for="description">Description</label>
+            <textarea name="description" id="description" required></textarea>
+        </div>
+        <div>
+            <label for="additional_info">Additional Info</label>
+            <input type="text" name="additional_info" id="additional_info">
+        </div>
+        <button type="submit">Save</button>
+    </form>
+@endsection

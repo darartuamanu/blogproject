@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\auth\AuthController;
+use App\Http\Controllers\DetailController;
 
 Route::resource('/', PostController::class)->names([
   'index' => 'posts.index',
@@ -22,3 +23,4 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/posts', [PostController::class, 'index'])->middleware('auth');
 Route::get('/posts/{id}', [PostController::class, 'show'])->middleware('auth');
 Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
+Route::resource('details', DetailController::class);
