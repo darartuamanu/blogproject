@@ -30,8 +30,8 @@
   </section>
     
 </div>
-@endsection
-<h1>Add New Detail</h1>
+
+<!--<h1>Add New Detail</h1>
     <form action="{{ route('details.store') }}" method="POST">
         @csrf
         <div>
@@ -47,5 +47,5 @@
             <input type="text" name="additional_info" id="additional_info">
         </div>
         <button type="submit">Save</button>
-    </form>
+    </form>-->
 @endsection

@@ -23,7 +23,7 @@
               <img class="img-fluid" style="max-width:50%;" src="{{ asset('images/'.$post->image)}}" alt="">
             </div>
             <div class="col-10">
-              <h4>{{$post->title}}</h4>
+              <h4> <a href="/posts/{{$post->id}}">{{$post->title}}</a></h4>
             </div>
           </div>
           <p>{{$post->description}}</p>

@@ -54,6 +54,13 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
+    public function show($id)
+    {
+        $post = Post::findOrFail($id);
+
+        return view('posts.details',compact('post'));
+    }
+
     // Destroy method to delete a post
     public function destroy($id)
     {
