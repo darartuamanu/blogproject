@@ -49,18 +49,3 @@
   @endif
 </div>
 @endsection
-<h1>Details</h1>
-    <a href="{{ route('details.create') }}">Add New Detail</a>
-    @foreach($details as $detail)
-        <div>
-            <h2>{{ $detail->description }}</h2>
-            <a href="{{ route('details.show', $detail->id) }}">View</a>
-            <a href="{{ route('details.edit', $detail->id) }}">Edit</a>
-            <form action="{{ route('details.destroy', $detail->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Delete</button>
-            </form>
-        </div>
-    @endforeach
-@endsection

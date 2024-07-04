@@ -1,5 +1,6 @@
 <!-- resources/views/details.blade.php -->
 
+<!-- resources/views/details.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,23 +28,37 @@
     <script>
         $(document).ready(function() {
             $('.details-trigger').hover(function() {
-                $('.details').toggleClass('active');
+                $(this).next('.details').toggleClass('active');
             });
         });
     </script>
 </head>
 <body>
-    <div>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-            <span class="details-trigger">Hover here for details</span>.
-        </p>
-        <div class="details">
-            <h3>{{ $details['title'] }}</h3>
-            <p>{{ $details['description'] }}</p>
-            <p>Price: {{ $details['price'] }}</p>
-            <p>Availability: {{ $details['availability'] }}</p>
+    <h1>Details</h1>
+    <a href="{{ route('details.create') }}">Add New Detail</a>
+    @foreach($details as $detail)
+        <div>
+            <h2>{{ $detail->description }}</h2>
+            <a href="{{ route('details.show', $detail->id) }}">View</a>
+            <a href="{{ route('details.edit', $detail->id) }}">Edit</a>
+            <form action="{{ route('details.destroy', $detail->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('DELETE')
+                <button type="submit">Delete</button>
+            </form>
         </div>
-    </div>
+        <div>
+            <p>
+                {{ $detail->short_description }}
+                <span class="details-trigger">Hover here for details</span>.
+            </p>
+            <div class="details">
+                <h3>{{ $detail->title }}</h3>
+                <p>{{ $detail->description }}</p>
+                <p>Price: {{ $detail->price }}</p>
+                <p>Availability: {{ $detail->availability }}</p>
+            </div>
+        </div>
+    @endforeach
 </body>
 </html>
