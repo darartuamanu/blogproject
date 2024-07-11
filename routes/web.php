@@ -5,6 +5,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Routing\RouteGroup;
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -33,6 +34,9 @@ Route::resource('test', TestController::class);
   Route::post('/posts', [PostController::class, 'store'])->name('auth');
   Route::resource('details', DetailController::class);
   Route::resource('test', TestController::class);
+  Route::get('/home', [HomeController::class, 'index'])->name('home');
+  Route::get('/posts', 'PostController@index')->name('post.index');
+
 
   
 //});

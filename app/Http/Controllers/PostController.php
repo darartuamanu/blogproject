@@ -39,12 +39,17 @@ class PostController extends Controller
         ]);
 
         // Handle image upload
-        $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images'), $file_name);
-
+        $file = request()->file('image');
+        $file_name = time() . '.' . $file->getClientOriginalExtension();
+        // dd($file_name);
+        $file->move(public_path('images'), $file_name);
+  
+        $data = $request->all();
+        $data['image'] = $file_name;
+      
         // Create new Post instance and save
 
-        Post::create($request->all());
+        Post::create($data);
         // $post = new Post;
         // $post->title = $request->title;
         // $post->description = $request->description;
@@ -57,7 +62,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-
+// dd( $post);
         return view('posts.details',compact('post'));
     }
 

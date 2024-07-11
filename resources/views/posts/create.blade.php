@@ -1,7 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-  <h3>Add Post</h3>
+  <h3 style="color: blue; font-size: 24px; font-weight: bold; margin-bottom: 20px; margin-right: 1cm;">Add Post</h3>
+
+
+
   <section class="mt-3">
     <form method="post" action="{{ route('posts.store') }}" enctype="multipart/form-data">
       @csrf
@@ -16,16 +19,23 @@
         </div>
       @endif
       <div class="card p-3">
-        <label for="floatingInput">Title</label>
-        <input class="form-control" type="text" name="title">
-        <label for="floatingTextArea">Description</label>
-        <textarea class="form-control" name="description" id="floatingTextarea"  cols="30" rows="10"></textarea>
-        <label for="formFile" class="form-label">Add Image</label>
+        <label for="floatingInput" >Title</label>
+
+        
+        <input class="form-control" type="text" name="title" onfocus="this.style.border = '1px solid #80bdff'; onblur="this.style.border = '1px solid #ccc';><br><br>
+        <label for="floatingTextArea" style="margin-bottom: 5px; display: block;" style="color: purple;">Description</label>
+         <textarea class="form-control" name="description" id="floatingTextarea"  cols="20"style= rows="5"></textarea>
+        <label for="formFile" class="form-label">Add Image</label><br><br>
         <img src="" alt="" class="img-blog">
-        <input class="form-control" type="file" name="image">
-      </div>
-      <button class="btn btn-secondary m-3">Save</button>
-      <button class="btn btn-secondary m-3">Delate</button>
+        
+        <label for="image" class="form-label" style="margin-bottom: 3px; display: block; cursor: pointer; color: purple; text-decoration: underline;">Select Image</label><br>
+
+                              <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+
+      </div><br>
+      <button class="btn btn-secondary m-3" style="color: purple;">Save</button>
+      <button class="btn btn-secondary m-3" style="margin-top: -3cm;color: purple; margin-left: 3cm;">Delete</button>
+
     </form>
   </section>
     

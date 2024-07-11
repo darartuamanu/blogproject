@@ -1,7 +1,7 @@
 <!-- resources/views/details.blade.php -->
 
 <!-- resources/views/details.blade.php -->
-<!--!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -24,19 +24,23 @@
             text-decoration: underline;
         }
     </style>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+    {{-- <script>
         $(document).ready(function() {
             $('.details-trigger').hover(function() {
                 $(this).next('.details').toggleClass('active');
             });
         });
-    </script>
+    </script> --}}
 </head>
 <body>
     <h1>Details</h1>
-    <a href="{{ route('details.create') }}">Add New Detail</a>
-  
+    {{-- <a href="{{ route('details.create') }}">Add New Detail</a> --}}
+    <div class="details">
+        <h3>{{ $post->title }}</h3>
+        <img class="img-fluid" style="max-width:25%;" src="{{ asset('images/'.$post->image)}}" alt="">
+        <p>{{ $post->description }}</p>  
+    </div>
         <div>
             <h2>{{ $post->description }}</h2>
             <a href="{{ route('details.show', $post->id) }}">View</a>
@@ -52,13 +56,8 @@
                 {{ $post->short_description }}
                 <span class="details-trigger">Hover here for details</span>.
             </p>
-            <div class="details">
-                <h3>{{ $post->title }}</h3>
-                <p>{{ $post->description }}</p>
-                <p>Price: {{ $post->price }}</p>
-                <p>Availability: {{ $post->availability }}</p>
-            </div>
+           
         </div>
 
 </body>
-</html>-->
+</html> 
