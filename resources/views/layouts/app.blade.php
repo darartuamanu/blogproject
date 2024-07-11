@@ -3,22 +3,40 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mini-Blog</title>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title> Blog</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <!-- Additional Styles -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
+      <!-- style css -->
+      <!-- Responsive-->
+  <link rel="stylesheet" href="{{ asset('css/responsive.css')}}">
+      <!-- fevicon -->
+ <link rel="icon" href="{{ asset('images/fevicon.png" type="image/gif')}}">
+      <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css')}}">
+
 
   <!-- Vite JS -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar-example" tabindex="0">
-
+{{-- @yield('css') --}}
   <!-- Navbar -->
+
   <header>
     <nav id="navbar-example" class="navbar navbar-expand-lg navbar-dark bg-primary">
       <div class="container-fluid">
@@ -116,7 +134,16 @@
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-  
+  <script src="{{asset('js/jquery.min.js')}}"></script>
+  <script src="{{asset('js/popper.min.js')}}"></script>
+  <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('js/jquery-3.0.0.min.js')}}"></script>
+  <script src="{{asset('js/plugin.js')}}"></script>
+  <!-- Scrollbar Js Files -->
+  <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+</html>
   <!-- Initialize Tooltips -->
  <!-- <script>
       document.addEventListener('DOMContentLoaded', function() {
