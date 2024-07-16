@@ -27,12 +27,13 @@
 
       <body>
           <form>
+        
               <label for="description">Description:</label>
-              <textarea id="description" name="description" rows="4" cols="50" oninput="limitWords(this, 150)" style="width: 100%;"></textarea>
-              <p id="wordCount">0/150 words</p>
+              <textarea id="description" name="description" rows="4" cols="50"  style="width: 100%;"></textarea>
+            
           </form>
       
-          <script>
+          {{--<script>
               function limitWords(textarea, maxWords) {
                   let words = textarea.value.split(/\s+/).filter(word => word.length > 0);
                   if (words.length > maxWords) {
@@ -40,7 +41,7 @@
                   }
                   document.getElementById("wordCount").innerText = `${words.length > maxWords ? maxWords : words.length}/${maxWords} words`;
               }
-          </script>
+          </script>--}}
        <!-- <label for="floatingTextArea" style="margin-bottom: 5px; display: block;" style="color: purple;">Description</label>
         <textarea id="description" name="description" rows="4" cols="50" oninput="limitWords(this, 150)" style="width: 100%;"></textarea>
         <p id="wordCount">0/150 words</p>-->

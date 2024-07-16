@@ -34,7 +34,7 @@ class PostController extends Controller
         // Validations
         $request->validate([
             'title' => 'required',
-            'description' => 'required',
+            'description' => 'required|max:400',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -79,4 +79,54 @@ class PostController extends Controller
     
             return redirect()->route('posts.index')->with('error', 'Post not found');
         }
-    }
+        public function edit($id)
+        {
+            $post = Post::find($id);
+    
+            if (!$post) {
+                return redirect()->route('posts.index')->with('error', 'Post not found');
+            }
+    
+            return view('posts.edit', compact('post'));
+        }
+    
+        public function update(Request $request, $id)
+        {
+            // Validate the request data
+            $request->validate([
+                'title' => 'required|unique:posts,title,|max:255',
+                'image' => 'required',
+                'description' => 'required|max:400',
+
+            ]);
+                
+            $post=Post::find($id);
+        
+            // Update the post
+            $post->title = $request->input('title');
+            $post-> description=
+                
+                 $request->input('description');
+            $post->save();
+        
+            // Redirect back to the posts index with a success message
+            return redirect()->route('posts.index')->with('success', 'Post updated successfully');
+        
+        
+    
+            // Find the post by ID
+            $post = Post::find($post_id);
+    
+            if (!$post) {
+                return redirect()->route('posts.index')->with('error', 'Post not found');
+            }
+    
+            // Update the post with the new data
+            $post->title = $request->input('title');
+            $post->description = $request->input('description');
+            $post->image = $request->input('image');
+            $post->save();
+    
+            return redirect()->route('posts.index')->with('success', 'Post updated successfully');
+        }
+}

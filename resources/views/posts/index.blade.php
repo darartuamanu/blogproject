@@ -95,11 +95,14 @@
                             <h5>{{ $post->created_at->diffForHumans() }}</h5>
                             <p>{{ $post->description }}</p>
                             <hr>
+                             <!-- Edit Button -->
+                             <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="btn btn-primary">Edit</a><br><br>
                             <!-- Delete Button -->
                             <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
+
                             </form>
                         </div>
                     </div>
