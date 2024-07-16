@@ -8,6 +8,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Routing\RouteGroup;
 
+
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::resource('test', TestController::class);
 
@@ -22,7 +23,7 @@ Route::resource('test', TestController::class);
     'show' => 'posts.show',
   ]);
   
-  Route::delete('/posts/{id}', 'App\Http\Controllers\PostController@destroy')->name('posts.destroy');
+  Route::delete('/details/{id}', [DetailController::class, 'destroy'])->name('details.destroy');
   Route::get('/posts/{id}', [PostController::class, 'show']);  
   Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
   Route::get('registration', [AuthController::class, 'registration'])->name('register');
@@ -36,6 +37,8 @@ Route::resource('test', TestController::class);
   Route::resource('test', TestController::class);
   Route::get('/home', [HomeController::class, 'index'])->name('home');
   Route::get('/posts', 'PostController@index')->name('post.index');
+  Route::get('/description',[PostController::class,'description']);
+  Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 
   

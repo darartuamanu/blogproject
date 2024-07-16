@@ -54,10 +54,12 @@ class DetailController extends Controller
     }
 
     public function destroy($id)
-    {
-        $detail = Detail::find($id);
+{
+    $detail = Detail::findOrFail($id);
+    if ($detail) {
         $detail->delete();
-
         return redirect()->route('details.index')->with('success', 'Detail deleted successfully.');
+    } else {
+        dd("Detail not found with ID: ".$id);
     }
-}
+}}

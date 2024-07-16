@@ -67,12 +67,16 @@ class PostController extends Controller
     }
 
     // Destroy method to delete a post
-    public function destroy($id)
-    {
-        $post = Post::findOrFail($id);
-        $post->delete();
-
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully.');
+    
+        public function destroy($id)
+        {
+            $post = Post::find($id);
+    
+            if ($post) {
+                $post->delete();
+                return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
+            }
+    
+            return redirect()->route('posts.index')->with('error', 'Post not found');
+        }
     }
-
-}

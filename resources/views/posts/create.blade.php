@@ -23,21 +23,40 @@
 
         
         <input class="form-control" type="text" name="title" onfocus="this.style.border = '1px solid #80bdff'; onblur="this.style.border = '1px solid #ccc';><br><br>
-        <label for="floatingTextArea" style="margin-bottom: 5px; display: block;" style="color: purple;">Description</label>
-         <textarea class="form-control" name="description" id="floatingTextarea"  cols="20"style= rows="5"></textarea>
-        <label for="formFile" class="form-label">Add Image</label><br><br>
+      </head>
+
+      <body>
+          <form>
+              <label for="description">Description:</label>
+              <textarea id="description" name="description" rows="4" cols="50" oninput="limitWords(this, 150)" style="width: 100%;"></textarea>
+              <p id="wordCount">0/150 words</p>
+          </form>
+      
+          <script>
+              function limitWords(textarea, maxWords) {
+                  let words = textarea.value.split(/\s+/).filter(word => word.length > 0);
+                  if (words.length > maxWords) {
+                      textarea.value = words.slice(0, maxWords).join(" ");
+                  }
+                  document.getElementById("wordCount").innerText = `${words.length > maxWords ? maxWords : words.length}/${maxWords} words`;
+              }
+          </script>
+       <!-- <label for="floatingTextArea" style="margin-bottom: 5px; display: block;" style="color: purple;">Description</label>
+        <textarea id="description" name="description" rows="4" cols="50" oninput="limitWords(this, 150)" style="width: 100%;"></textarea>
+        <p id="wordCount">0/150 words</p>-->
+        <label for="formFile" class="form-label">Add Image</label>
         <img src="" alt="" class="img-blog">
         
-        <label for="image" class="form-label" style="margin-bottom: 3px; display: block; cursor: pointer; color: purple; text-decoration: underline;">Select Image</label><br>
+        <label for="image" class="form-label" style="margin-bottom: 3px; display: block; cursor: pointer; color: purple; text-decoration: underline;"></label><br>
 
                               <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
 
-      </div><br>
-      <button class="btn btn-secondary m-3" style="color: purple;">Save</button>
-      <button class="btn btn-secondary m-3" style="margin-top: -3cm;color: purple; margin-left: 3cm;">Delete</button>
-
+      <br>
+      <button class="btn btn-secondary m-3" style="color: white;">Save</button>
+      <button class="btn btn-secondary m-3" style="margin-top: -3cm;color: white; margin-left: 3cm;">Delete</button>
+    </div>
     </form>
-  </section>
+    
     
 </div>
 
