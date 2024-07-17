@@ -107,17 +107,17 @@
                                             <li>
                                                 <a href="about.html">About</a>
                                             </li>
-                                            <li>
+                                            <!--<li>
                                                 <a href="marketing.html">Marketing</a>
-                                            </li>
+                                            </li>-->
                                             <li>
                                                 <a href="/create">Add Post</a>
                                             </li>
-                                            <li>
+                                            <!--<li>
                                                 <a href="contact.html">Contact us</a>
-                                            </li>
+                                            </li>-->
                                             <li>
-                                                <a href="#">Login</a>
+                                                <a href="dashboard">Login</a>
                                             </li>
                                             <li>
                                                 <a href="#">Register</a>
@@ -145,11 +145,11 @@
                         <a href="#"><img src="images/footer_logo.png" alt="#" /></a>
                         <ul class="contact_information">
                             <li><span><img src="images/location_icon.png" alt="#" /></span><span
-                                    class="text_cont">London 145<br>United Kingdom</span></li>
+                                    class="text_cont">addis<br>Ethiopia</span></li>
                             <li><span><img src="images/phone_icon.png" alt="#" /></span><span
                                     class="text_cont">987 654 3210<br>987 654 3210</span></li>
                             <li><span><img src="images/mail_icon.png" alt="#" /></span><span
-                                    class="text_cont">demo@gmail.com<br>support@gmail.com</span></li>
+                                    class="text_cont">darartuamanu6@gmail.com<br></span></li>
                         </ul>
                         <ul class="social_icon">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>

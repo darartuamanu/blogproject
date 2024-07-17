@@ -8,14 +8,14 @@
                 <div class="col-md-7">
                     <div id="slider_main" class="carousel slide" data-ride="carousel">
                         <!-- The slideshow -->
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
+                       {{-- <div class="carousel-inner">--}}
+                            <!--<div class="carousel-item active">
                                 <img src="images/slider_1.png" alt="#" />
                             </div>
                             <div class="carousel-item">
                                 <img src="images/slider_1.png" alt="#" />
                             </div>
-                        </div>
+                        </div>-->
                         <!-- Left and right controls -->
                         <a class="carousel-control-prev" href="#slider_main" data-slide="prev">
                             <i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -25,7 +25,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-md-5">
+                <!--<div class="col-md-5">
                     <div class="full slider_cont_section">
                         <h4>More Featured in</h4>
                         <h3>Jack Blogger</h3>
@@ -38,7 +38,7 @@
                             <a href="contact.html">Contact Us</a>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -48,16 +48,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="heading">
+                    <!--<div class="heading">
                         <h3>About <span class="orange_color">Us</span></h3>
-                    </div>
+                    </div>-->
                 </div>
             </div>
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-md-6">
                     <img src="images/blog1.png" alt="#" />
-                </div>
-                <div class="col-md-6">
+                </div>-->
+                <!--<div class="col-md-6">
                     <div class="full blog_cont">
                         <h4>The biggest and most awesome camera of year</h4>
                         <h5>MAY 14 2019 5 READ</h5>
@@ -65,10 +65,10 @@
                             suffered alteration in some form, by injected humour, or randomised words which don't
                             look even slightly believable.</p>
                     </div>
-                </div>
+                </div>-->
             </div>
 
-            <div class="row margin_top_30">
+           <!-- <div class="row margin_top_30">
                 <div class="col-md-6">
                     <img src="images/blog2.png" alt="#" />
                 </div>
@@ -81,7 +81,7 @@
                             look even slightly believable.</p>
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <!-- Blog Posts Section -->
             @foreach ($posts as $post)
@@ -109,23 +109,23 @@
                 </div>
             @endforeach
 
-            <div class="row margin_top_30">
+           <!-- <div class="row margin_top_30">
                 <div class="col-md-12">
                     <div class="button_section full center margin_top_30">
                         <a style="margin:0;" href="about.html">Read More</a>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 
     <!-- Marketing Section -->
-    <div class="section layout_padding dark_bg">
+    <!--<div class="section layout_padding dark_bg">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="heading">
-                        <h3>Marketing</h3>
+                        <h3>practice</h3>
                     </div>
                 </div>
             </div>
@@ -135,26 +135,17 @@
                 </div>
                 <div class="col-md-6">
                     <div class="full blog_cont">
-                        <h3 class="white_font">Where can I get some</h3>
-                        <h5 class="grey_font">March 19 2019 5 READ</h5>
-                        <p class="white_font">There are many variations of passages of Lorem Ipsum available, but
-                            the majority have suffered alteration in some form, by injected humour, or randomised
-                            words which don't look even slightly believable. If you are going to use a passage of
-                            Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle
-                            of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks
-                            as necessary, making this the first true generator on the Internet. It uses a dictionary
-                            of over 200 Latin words, combined g to use a passage of Lorem Ipsum, you need to be sure
-                            there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum
-                            generators on the Internet tend to repeat predefined chunks as necessary, making this
-                            the first true generator..</p>
+                        <h3 class="white_font"></h3>
+                        <h5 class="grey_font"></h5>
+                        <p class="white_font">Start by exploring the official documentation and following tutorials to grasp the fundamentals, such as routing, middleware, controllers, and views.</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- Comments Section -->
-    <section class="layout_padding">
+    <!--<section class="layout_padding">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -243,10 +234,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- Blog Section -->
-    <div class="section layout_padding blog_blue_bg light_silver">
+   <!-- <div class="section layout_padding blog_blue_bg light_silver">
         <div class="container">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
@@ -273,5 +264,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 @endsection

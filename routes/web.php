@@ -41,6 +41,7 @@ Route::resource('test', TestController::class);
   Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
   Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
   Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+  Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
 
   
 //});
