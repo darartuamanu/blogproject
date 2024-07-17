@@ -120,7 +120,7 @@
                                                 <a href="dashboard">Login</a>
                                             </li>
                                             <li>
-                                                <a href="#">Register</a>
+                                                <a href="register">Register</a>
                                             </li>
                                             <li>
                                                 <a href="#"><img src="images/search_icon.png"

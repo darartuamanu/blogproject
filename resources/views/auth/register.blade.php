@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>auth practice</title>
+  <title>Auth Practice</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   <style type="text/css">
-    body{
+    body {
       background: #F8F9FA;
     }
   </style>
@@ -25,14 +25,16 @@
               </a>
             </div>
             <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Sign up to your account</h2>
+            
+            <!-- Registration Form -->
             <form method="POST" action="{{ route('register.post') }}">
               @csrf
 
-              @session('error')
+              @if(session('error'))
                   <div class="alert alert-danger" role="alert"> 
-                      {{ $value }}
+                      {{ session('error') }}
                   </div>
-              @endsession
+              @endif
 
               <div class="row gy-2 overflow-hidden">
                 <div class="col-12">
@@ -59,7 +61,7 @@
                 </div>
                 <div class="col-12">
                   <div class="form-floating mb-3">
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" value="" placeholder="Password" required>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password" required>
                     <label for="password" class="form-label">{{ __('Password') }}</label>
                   </div>
                   @error('password')
@@ -70,7 +72,7 @@
                 </div>
                 <div class="col-12">
                   <div class="form-floating mb-3">
-                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" value="" placeholder="password_confirmation" required>
+                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="password_confirmation" required>
                     <label for="password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
                   </div>
                   @error('password_confirmation')
@@ -89,6 +91,8 @@
                 </div>
               </div>
             </form>
+            <!-- End Registration Form -->
+            
           </div>
         </div>
       </div>
