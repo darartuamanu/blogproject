@@ -6,6 +6,7 @@ use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\DetailController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Routing\RouteGroup;
 
 
@@ -41,6 +42,13 @@ Route::resource('test', TestController::class);
   Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
   Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
   Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+  Route::get('/register', [RegisterController::class,'showRegistrationForm'])->name('register');
+  
+  Route::post('/register', [RegisterController::class,'register']);//->name('register.post');
+ // Route::get('/dashboard', [DashboardController::class,'index')->middleware('auth');
+  
+
+
 
   
 //});

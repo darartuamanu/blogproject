@@ -17,12 +17,12 @@
                             </div>
                         </div>-->
                         <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#slider_main" data-slide="prev">
+                       <!-- <a class="carousel-control-prev" href="#slider_main" data-slide="prev">
                             <i class="fa fa-angle-left" aria-hidden="true"></i>
                         </a>
                         <a class="carousel-control-next" href="#slider_main" data-slide="next">
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </a>
+                        </a>-->
                     </div>
                 </div>
                 <!--<div class="col-md-5">
