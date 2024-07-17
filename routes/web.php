@@ -7,7 +7,6 @@ use App\Http\Controllers\DetailController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Routing\RouteGroup;
-use App\Http\Auth\RegisterController;
 
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -27,7 +26,8 @@ Route::resource('test', TestController::class);
   Route::delete('/details/{id}', [DetailController::class, 'destroy'])->name('details.destroy');
   Route::get('/posts/{id}', [PostController::class, 'show']);  
   Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post'); 
- 
+  Route::get('registration', [AuthController::class, 'registration'])->name('register');
+  Route::post('post-registration', [AuthController::class, 'postRegistration'])->name('register.post'); 
   Route::get('dashboard', [AuthController::class, 'dashboard']); 
   Route::get('logout', [AuthController::class, 'logout'])->name('logout'); 
   Route::get('/posts', [PostController::class, 'index'])->name('auth');
@@ -41,8 +41,6 @@ Route::resource('test', TestController::class);
   Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
   Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
   Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
-  Route::get('/dashboard', 'DashboardController@index')->middleware('auth');
-  Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
   
 //});

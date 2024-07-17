@@ -25,8 +25,6 @@
               </a>
             </div>
             <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Sign up to your account</h2>
-            
-            <!-- Registration Form -->
             <form method="POST" action="{{ route('register.post') }}">
               @csrf
 
@@ -91,8 +89,6 @@
                 </div>
               </div>
             </form>
-            <!-- End Registration Form -->
-            
           </div>
         </div>
       </div>
