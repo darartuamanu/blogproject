@@ -72,7 +72,7 @@ class AuthController extends Controller
             
         Auth::login($user); 
 
-        return redirect("Home")->withSuccess('Great! You have Successfully loggedin');
+        return redirect("home")->withSuccess('Great! You have Successfully loggedin');
     }
     
     /**

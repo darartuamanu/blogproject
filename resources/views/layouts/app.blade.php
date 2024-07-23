@@ -7,6 +7,7 @@
     <!-- mobile metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- site metas -->
     <title> Blog</title>
     <meta name="keywords" content="">
@@ -120,7 +121,7 @@
                                                 <a href="dashboard">Login</a>
                                             </li>
                                             <li>
-                                                <a href="register">Register</a>
+                                                <a href="home">Register</a>
                                             </li>
                                             <li>
                                                 <a href="#"><img src="images/search_icon.png"
@@ -344,6 +345,8 @@
                 <!-- Scrollbar Js Files -->
                 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
                 <script src="js/custom.js"></script>
+                
+                
     </body>
 
 </html>

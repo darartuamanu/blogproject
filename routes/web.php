@@ -40,11 +40,13 @@ Route::resource('test', TestController::class);
   Route::get('/posts', 'PostController@index')->name('post.index');
   Route::get('/description',[PostController::class,'description']);
   Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
-  Route::get('/posts/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
+  Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+
   Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
   Route::get('/register', [RegisterController::class,'showRegistrationForm'])->name('register');
   
   Route::post('/register', [RegisterController::class,'register']);//->name('register.post');
+  Route::resource('posts', PostController::class);
  // Route::get('/dashboard', [DashboardController::class,'index')->middleware('auth');
   
 

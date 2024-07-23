@@ -96,7 +96,7 @@
                             <p>{{ $post->description }}</p>
                             <hr>
                              <!-- Edit Button -->
-                             <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="btn btn-primary">Edit</a><br><br>
+                             <a href="{{ route('posts.edit', $post->id) }}">Edit </a>
                             <!-- Delete Button -->
                             <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
                                 @csrf
