@@ -59,25 +59,40 @@
                 </div>
                 <div class="col-12">
                   <div class="form-floating mb-3">
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password" required>
-                    <label for="password" class="form-label">{{ __('Password') }}</label>
+                      <div class="input-group">
+                          <input type="password" 
+                                 class="form-control @error('password') is-invalid @enderror" 
+                                 name="password" id="password" 
+                                 placeholder="Password" required>
+                          <label for="password" class="form-label">{{ __('') }}</label>
+                          <button type="button" 
+                                  class="btn btn-outline-secondary" 
+                                  id="togglePassword">
+                              <i class="fa fa-eye" id="togglePasswordIcon"></i>
+                          </button>
+                      </div>
                   </div>
                   @error('password')
-                      <span class="text-danger" role="alert">
+                      <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
                   @enderror
-                </div>
-                <div class="col-12">
-                  <div class="form-floating mb-3">
-                    <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="password_confirmation" placeholder="password_confirmation" required>
-                    <label for="password_confirmation" class="form-label">{{ __('Confirm Password') }}</label>
-                  </div>
-                  @error('password_confirmation')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
+              </div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const togglePassword = document.getElementById('togglePassword');
+                    const passwordField = document.getElementById('password');
+                    const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+            
+                    togglePassword.addEventListener('click', function () {
+                        const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                        passwordField.setAttribute('type', type);
+                        togglePasswordIcon.classList.toggle('fa-eye');
+                        togglePasswordIcon.classList.toggle('fa-eye-slash');
+                    });
+                });
+            </script>
+              
                 </div>
                 <div class="col-12">
                   <div class="d-grid my-3">

@@ -53,7 +53,7 @@
                                  class="form-control @error('password') is-invalid @enderror" 
                                  name="password" id="password" 
                                  placeholder="Password" required>
-                          <label for="password" class="form-label">{{ __('Password') }}</label>
+                          <label for="password" class="form-label">{{ __('') }}</label>
                           <button type="button" 
                                   class="btn btn-outline-secondary" 
                                   id="togglePassword">

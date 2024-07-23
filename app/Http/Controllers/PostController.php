@@ -13,11 +13,11 @@ class PostController extends Controller
     }
     //Index method to display posts
     public function index()
-    {
-        $posts = Post::orderBy('created_at', 'desc')->get();
-        return view('posts.index', ['posts' => $posts]);
-    }
-
+{
+    
+    $posts = Post::orderBy('created_at', 'desc')->get();
+    return view('posts.index', ['posts' => $posts]);
+}
 
     // Create method to show the create post form
     public function create()

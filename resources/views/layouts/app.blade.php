@@ -121,7 +121,7 @@
                                                 <a href="dashboard">Login</a>
                                             </li>
                                             <li>
-                                                <a href="home">Register</a>
+                                                <a href="register">Register</a>
                                             </li>
                                             <li>
                                                 <a href="#"><img src="images/search_icon.png"
@@ -137,18 +137,18 @@
                 <!-- end header inner -->
         </header>
         
-        @yield('content')
+        @yield('content')<br><br>
         
         <footer>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
-                        <a href="#"><img src="images/footer_logo.png" alt="#" /></a>
+                        <a href="#"><img src="images/logo.png" alt="#" /></a>
                         <ul class="contact_information">
                             <li><span><img src="images/location_icon.png" alt="#" /></span><span
                                     class="text_cont">addis<br>Ethiopia</span></li>
                             <li><span><img src="images/phone_icon.png" alt="#" /></span><span
-                                    class="text_cont">987 654 3210<br>987 654 3210</span></li>
+                                    class="text_cont">09 11 12 13 14<br>09 00 00 00 00</span></li>
                             <li><span><img src="images/mail_icon.png" alt="#" /></span><span
                                     class="text_cont">darartuamanu6@gmail.com<br></span></li>
                         </ul>
@@ -235,102 +235,7 @@
 
 
 
-        <header>
-            <nav id="navbar-example" class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <div class="container-fluid">
-                   {{--   <!--<a class="navbar-brand" href="{{ route('posts.index') }}">Mini-Blog</a>-->--}}
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                              {{--    <!--<a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
-            </li>-->
-                                <!-- <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Categories
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Category 1</a></li>
-                <li><a class="dropdown-item" href="#">Category 2</a></li>
-                <li><a class="dropdown-item" href="#">Category 3</a></li>
-              </ul>
-            </li>-->--}}
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-            </head>
-            
-            <!-- Main Content -->
-           <!-- <main class="container mt-4">-->
-                <!-- Carousel -->
-                <!--<div id="carouselExampleIndicators" class="carousel slide mb-5" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button><br>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>-->
-                <!-- <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="First slide">
-          <div class="carousel-caption d-none d-md-block">
-            <h5></h5>
-            <p></p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="Second slide">
-          <div class="carousel-caption d-none d-md-block">
-            <h5></h5>
-            <p></p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="https://via.placeholder.com/800x400" class="d-block w-100" alt="Third slide">
-          <div class="carousel-caption d-none d-md-block">
-            <h5></h5>
-            <p></p>
-          </div>
-        </div>
-      </div>-->
-                <!--<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">-->
-                <!--<span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-                <!--<span class="visually-hidden">Previous</span>-->
-                <!--</button>-->
-                <!--<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">-->
-                <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>-->
-                <!--</button>-->
-                </div>
-
-                <!-- Content Section -->
-                
-                <!-- Tooltip Example -->
-                <main class="container mt-5">
-
-
-                    <!-- Line Separator -->
-                    <hr class="my-5">
-
-                    <!-- Modal Button -->
-
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                </main>
-                
-
-                 <!--<Footer>
-  <footer class="footer mt-auto py-3 bg-dark">
-      <div class="container d-lg-flex justify-content-between">
-          <span class="text-light">Mini-Blog © 2023</span>
-      </div>
-  </footer>-->
+       
 
                 <!-- Scripts -->
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

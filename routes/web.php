@@ -36,7 +36,7 @@ Route::resource('test', TestController::class);
   Route::post('/posts', [PostController::class, 'store'])->name('auth');
   Route::resource('details', DetailController::class);
   Route::resource('test', TestController::class);
-  Route::get('/home', [HomeController::class, 'index'])->name('home');
+  Route::get('/home', [PostController::class, 'index'])->name('home');
   Route::get('/posts', 'PostController@index')->name('post.index');
   Route::get('/description',[PostController::class,'description']);
   Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
@@ -47,6 +47,10 @@ Route::resource('test', TestController::class);
   
   Route::post('/register', [RegisterController::class,'register']);//->name('register.post');
   Route::resource('posts', PostController::class);
+  Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+  
+
+  
  // Route::get('/dashboard', [DashboardController::class,'index')->middleware('auth');
   
 
