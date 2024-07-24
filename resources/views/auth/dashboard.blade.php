@@ -13,9 +13,9 @@
     <header class="pb-3 mb-4 border-bottom">
         <div class="row">
             <div class="col-md-11">
-                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+               <!-- <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
                     <img src="https://www.itsolutionstuff.com/assets/images/logo-it-2.png" alt="BootstrapBrain Logo" width="300">
-                </a>          
+                </a>-->          
             </div>
             <div class="col-md-1">
                 <a class="dropdown-item" href="{{ route('logout') }}"
@@ -42,7 +42,7 @@
         @endsession
 
         <h1 class="display-5 fw-bold">Hi, {{ auth()->user()->name }}</h1>
-        <p class="col-md-8 fs-4">Welcome to dashboard.<br/></p>
+        <p class="col-md-8 fs-4">Welcome to blog.<br/></p>
         <button class="btn btn-primary btn-lg" type="button">Dashboard</button>
       </div>
     </div>

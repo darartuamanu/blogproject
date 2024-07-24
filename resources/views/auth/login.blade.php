@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Laravel 11 Custom User Login Page - itsolutionstuff.com</title>
+  <title>auth practice</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
   <style type="text/css">
     body{
@@ -21,7 +21,7 @@
           <div class="card-body p-3 p-md-4 p-xl-5">
             <div class="text-center mb-3">
               <a href="#!">
-                <img src="https://www.itsolutionstuff.com/assets/images/footer-logo-2.png" alt="BootstrapBrain Logo" width="250">
+                <!--<img src="https://www.itsolutionstuff.com/assets/images/footer-logo-2.png" alt="BootstrapBrain Logo" width="250">-->
               </a>
             </div>
             <h2 class="fs-6 fw-normal text-center text-secondary mb-4">Sign in to your account</h2>
@@ -48,15 +48,43 @@
                 </div>
                 <div class="col-12">
                   <div class="form-floating mb-3">
-                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" value="" placeholder="Password" required>
-                    <label for="password" class="form-label">{{ __('Password') }}</label>
+                      <div class="input-group">
+                          <input type="password" 
+                                 class="form-control @error('password') is-invalid @enderror" 
+                                 name="password" id="password" 
+                                 placeholder="Password" required>
+                          <label for="password" class="form-label">{{ __('') }}</label>
+                          <button type="button" 
+                                  class="btn btn-outline-secondary" 
+                                  id="togglePassword">
+                              <i class="fa fa-eye" id="togglePasswordIcon"></i>
+                          </button>
+                      </div>
                   </div>
                   @error('password')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>
                       </span>
                   @enderror
-                </div>
+              </div>
+              
+              <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                      const togglePassword = document.getElementById('togglePassword');
+                      const passwordField = document.getElementById('password');
+                      const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+              
+                      togglePassword.addEventListener('click', function () {
+                          const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+                          passwordField.setAttribute('type', type);
+                          togglePasswordIcon.classList.toggle('fa-eye');
+                          togglePasswordIcon.classList.toggle('fa-eye-slash');
+                      });
+                  });
+              </script>
+              
+
+
                 <div class="col-12">
                   <div class="d-flex gap-2 justify-content-between">
                     <div class="form-check">
