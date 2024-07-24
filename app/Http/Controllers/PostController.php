@@ -34,6 +34,7 @@ class PostController extends Controller
             'title' => 'required',
             'description' => 'required|max:400',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            
         ]);
 
         // Handle image upload
@@ -43,8 +44,8 @@ class PostController extends Controller
   
         $data = $request->all();
         $data['image'] = $file_name;
-        $data['user_id'] = auth()->id();  // Assuming you have a user_id column to associate the post with the user
-
+          
+        $data['user_id'] = auth()->user()->id;  
         // Create new Post instance and save
         Post::create($data);
 
@@ -58,15 +59,12 @@ class PostController extends Controller
     }
 
     // Destroy method to delete a post
-    public function destroy($id)
+    public function destroy(Request $request, Post $post): RedirectResponse
     {
-        $post = Post::findOrFail($id);
-
-        $this->authorize('delete', $post);
-
-        $post->delete();
+        if ($request->user()->cannot('destroy', $post)) {
+            abort(403);
         return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
-    }
+    }}
 
     public function edit($id)
     {
@@ -77,11 +75,12 @@ class PostController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post): RedirectResponse
     {
-        $post = Post::findOrFail($id);
+        if ($request->user()->cannot('update', $post)) {
+            abort(403);
 
-        $this->authorize('update', $post);
+            return redirect()->route('posts.index')->with('success','post updated successfully');
 
         // Validate the request data
         $request->validate([
@@ -105,4 +104,5 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully');
     }
+}
 }
