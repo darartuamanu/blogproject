@@ -8,6 +8,9 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Routing\RouteGroup;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use App\Models\Post;
 
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -48,8 +51,14 @@ Route::resource('test', TestController::class);
   Route::post('/register', [RegisterController::class,'register']);//->name('register.post');
   Route::resource('posts', PostController::class);
   Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-  
+  Route::get('/posts/edit/{id}', [PostController::class, 'edit'])
+    ->middleware('admin');
 
+// Apply middleware to a group of routes
+Route::middleware('admin')->group(function () {
+    Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->middleware('auth');
+    Route::delete('/posts/{id}', [PostController::class, 'destroy'])->middleware('auth');
+});
   
  // Route::get('/dashboard', [DashboardController::class,'index')->middleware('auth');
   

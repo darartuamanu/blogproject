@@ -27,13 +27,18 @@
                         <p>{{ $post->description }}</p>
                         <hr>
                         <!-- Edit Button -->
-                        <a href="{{ route('posts.edit', $post->id) }}">Edit</a>
+                        @can('update', $post)
+                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
+                        @endcan
                         <!-- Delete Button -->
-                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        @can('delete', $post)
+                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        @endcan
+                        <br><br>
                     </div>
                 </div>
             </div>
