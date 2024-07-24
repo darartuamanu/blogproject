@@ -21,7 +21,7 @@
       <div class="card p-3">
         <label for="floatingInput" >Title</label>
 
-        
+      {{-- <input type="hidden" name="user_id" value="{{Auth::user()->id}}">--}}
         <input class="form-control" type="text" name="title" onfocus="this.style.border = '1px solid #80bdff'; onblur="this.style.border = '1px solid #ccc';><br><br>
       </head>
 

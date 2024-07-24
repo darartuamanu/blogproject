@@ -53,6 +53,7 @@ Route::resource('test', TestController::class);
   Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
   Route::get('/posts/edit/{id}', [PostController::class, 'edit'])
     ->middleware('admin');
+    
 
 // Apply middleware to a group of routes
 Route::middleware('admin')->group(function () {

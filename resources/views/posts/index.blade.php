@@ -26,6 +26,7 @@
                         <h5>{{ $post->created_at->diffForHumans() }}</h5>
                         <p>{{ $post->description }}</p>
                         <hr>
+                        
                         <!-- Edit Button -->
                         @can('update', $post)
                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>

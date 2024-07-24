@@ -89,7 +89,7 @@
                         @endforelse --}}
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-lg-3 logo_section">
+                        <div class="col-lg-2 logo_section">
                             <div class="full">
                                 <div class="center-desk">
                                     <div class="logo"> <a href="index.html"><img src="images/logo.png"
