@@ -37,7 +37,7 @@ class DashboardController extends Controller
 
         $post->update($request->all());
 
-        return redirect()->route('dashboard.index')->with('success', 'Post updated successfully.');
+        return redirect()->route('dashboard.')->with('success', 'Post updated successfully.');
     }
 
     public function destroy($id)
@@ -49,6 +49,6 @@ class DashboardController extends Controller
 
         $post->delete();
 
-        return redirect()->route('dashboard.index')->with('success', 'Post deleted successfully.');
+        return redirect()->route('dashboard')->with('success', 'Post deleted successfully.');
     }
 }

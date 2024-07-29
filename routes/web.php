@@ -70,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
   Route::put('/dashboard/posts/{id}', [DashboardController::class, 'update'])->name('dashboard.posts.update');
   Route::delete('/dashboard/posts/{id}', [DashboardController::class, 'destroy'])->name('dashboard.posts.destroy');
 });
-
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
   
  // Route::get('/dashboard', [PostController::class,'index'])->middleware('auth');
   

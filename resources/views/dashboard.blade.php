@@ -41,7 +41,7 @@
 
                 <h1 class="display-5 fw-bold">Hi, {{ auth()->user()->name }}</h1>
                 <p class="col-md-8 fs-4">Welcome to blog.<br/></p>
-                <a href="{{ route('dashboard.index') }}" class="btn btn-primary btn-lg">Dashboard</a>
+                <a href="{{ route('dashboard') }}" class="btn btn-primary btn-lg">Dashboard</a>
             </div>
         </div>
 

@@ -114,15 +114,22 @@
                                             <li>
                                                 <a href="/create">Add Post</a>
                                             </li>
+
                                             <!--<li>
-                                                <a href="contact.html">Contact us</a>
+                                                <a href="contact.html">dashboard</a>
                                             </li>-->
+                                            @if(Auth::check())
                                             <li>
-                                                <a href="dashboard">Login</a>
+                                                <a href="{{ route('dashboard') }}">Dashboard</a>
                                             </li>
+                                            @endif
                                             <li>
-                                                <a href="register">Register</a>
+                                                <a href="{{ route('login') }}">Login</a>
                                             </li>
+                                       <li>
+                                       <a href="{{ route('register') }}">Register</a>
+                                       </li>
+                                     
                                             <li>
                                                 <a href="#"><img src="images/search_icon.png"
                                                         alt="#" /></a>
