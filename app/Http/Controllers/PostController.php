@@ -26,6 +26,7 @@ class PostController extends Controller
     // Create method to show the create post form
     public function create()
     {
+    
         return view('posts.create');
     }
 
