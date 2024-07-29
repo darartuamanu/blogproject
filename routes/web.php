@@ -11,6 +11,7 @@ use Illuminate\Routing\RouteGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Post;
+use App\Http\Controllers\DashboardController;
 
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -55,18 +56,24 @@ Route::resource('test', TestController::class);
     ->middleware('admin');
     
 
-// Apply middleware to a group of routes
+
 Route::middleware('admin')->group(function () {
-    Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->middleware('auth');
+   Route::get('/posts/edit/{id}', [PostController::class, 'edit'])->middleware('auth');
     Route::delete('/posts/{id}', [PostController::class, 'destroy'])->middleware('auth');
 });
+Route::middleware('auth')->group(function () {
+  Route::resource('posts', PostController::class);
+});
+Route::middleware(['auth'])->group(function () {
+  Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+  Route::get('/dashboard/posts/{id}/edit', [DashboardController::class, 'edit'])->name('dashboard.posts.edit');
+  Route::put('/dashboard/posts/{id}', [DashboardController::class, 'update'])->name('dashboard.posts.update');
+  Route::delete('/dashboard/posts/{id}', [DashboardController::class, 'destroy'])->name('dashboard.posts.destroy');
+});
+
   
- // Route::get('/dashboard', [DashboardController::class,'index')->middleware('auth');
+ // Route::get('/dashboard', [PostController::class,'index'])->middleware('auth');
   
 
-
-
-  
-//});
 
 

@@ -5,9 +5,12 @@ use App\Http\Middleware\CheckAdmin;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class PostController extends Controller
 {
+    use AuthorizesRequests;
+
     public function __construct()
     {   
        // $this->middleware('auth'); // todo
@@ -34,7 +37,7 @@ class PostController extends Controller
             'title' => 'required',
             'description' => 'required|max:400',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            
+
         ]);
 
         // Handle image upload
@@ -45,7 +48,7 @@ class PostController extends Controller
         $data = $request->all();
         $data['image'] = $file_name;
           
-        $data['user_id'] = auth()->user()->id;  
+        $data['user_id'] = auth()->user()-> id;
         // Create new Post instance and save
         Post::create($data);
 
@@ -75,12 +78,17 @@ class PostController extends Controller
         return view('posts.edit', compact('post'));
     }
 
-    public function update(Request $request, Post $post): RedirectResponse
+    public function update(Request $request,  $id) 
     {
-        if ($request->user()->cannot('update', $post)) {
-            abort(403);
+        $post = Post::findOrFail($id);
 
-            return redirect()->route('posts.index')->with('success','post updated successfully');
+        if ($request->user()->cannot('update', $post)) {
+            dd($request->user()->cannot('update', $post));
+            return redirect()->route('posts.index')->with('error','cannot update');
+            abort(403); 
+            
+        }
+
 
         // Validate the request data
         $request->validate([
@@ -105,4 +113,4 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success', 'Post updated successfully');
     }
 }
-}
+

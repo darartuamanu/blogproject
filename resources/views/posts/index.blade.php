@@ -28,17 +28,18 @@
                         <hr>
                         
                         <!-- Edit Button -->
-                        @can('update', $post)
+                      
+                        {{--@can('update', $post)
                             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
-                        @endcan
+                       @endcan
                         <!-- Delete Button -->
-                        @can('delete', $post)
+                       @can('delete', $post)
                             <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this post?');" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>--}}
                             </form>
-                        @endcan
+                       {{-- @endcan--}}
                         <br><br>
                     </div>
                 </div>

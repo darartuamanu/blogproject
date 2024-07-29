@@ -103,7 +103,7 @@
                                     <nav class="main-menu">
                                         <ul class="menu-area-main">
                                             <li class="active">
-                                                <a href="index.html">Home</a>
+                                                <a href="home">Home</a>
                                             </li>
                                             <li>
                                                 <a href="about.html">About</a>

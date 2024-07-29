@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Auth\Access\Response;
 
-class PostPolicy
+/*class PostPolicy
 {
     use HandlesAuthorization;
 
@@ -17,19 +17,20 @@ class PostPolicy
      * @param  \App\Models\Post  $post
      * @return mixed
      */
-    public function update(User $user, Post $post): Response
+   
+     /*public function update(User $user, Post $post): Response
     {
-        return $user->id === $post->user_id
+        return $user->hasRole('super-admin') || $user->id === $post->user_id
             ? Response::allow()
-            : Response::denyWithStatus(404);
+            : Response::deny('You do not have permission to update this post.');
     }
 
     public function delete(User $user, Post $post): Response
     {
-        return $user->id === $post->user_id
+        return $user->hasRole('super-admin') || $user->id === $post->user_id
             ? Response::allow()
-            : Response::denyWithStatus(404);
+            : Response::deny('You do not have permission to delete this post.');
     }
-}
+}*/
 
 
