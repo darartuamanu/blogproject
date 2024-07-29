@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Post;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Auth\LoginController;
 
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -71,6 +72,10 @@ Route::middleware(['auth'])->group(function () {
   Route::delete('/dashboard/posts/{id}', [DashboardController::class, 'destroy'])->name('dashboard.posts.destroy');
 });
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
+// Logout route
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
   
  // Route::get('/dashboard', [PostController::class,'index'])->middleware('auth');
   

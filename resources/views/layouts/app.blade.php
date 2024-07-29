@@ -120,15 +120,27 @@
                                             </li>-->
                                             @if(Auth::check())
                                             <li>
-                                                <a href="{{ route('dashboard') }}">Dashboard</a>
-                                            </li>
-                                            @endif
-                                            <li>
-                                                <a href="{{ route('login') }}">Login</a>
-                                            </li>
-                                       <li>
-                                       <a href="{{ route('register') }}">Register</a>
-                                       </li>
+                                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                                   </li>
+                                   <!-- Logout link visible only to authenticated users -->
+                                   <li>
+                                   <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                   Logout
+                                   </a>
+                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                          </form>
+                                              </li>
+                                           @else
+                                       <!-- Login and Register links visible only to guests -->
+                                         <li>
+                                          <a href="{{ route('login') }}">Login</a>
+                                          </li>
+                                          <li>
+                                        <a href="{{ route('register') }}">Register</a>
+                                             </li>
+                                           @endif
                                      
                                             <li>
                                                 <a href="#"><img src="images/search_icon.png"
