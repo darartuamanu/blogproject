@@ -1,63 +1,142 @@
-<!-- resources/views/details.blade.php -->
-
-<!-- resources/views/details.blade.php -->
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Details on Hover</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
         .details {
             display: none;
             margin-top: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f0f0f0;
+            padding: 15px;
+            border: 1px solid #007bff;
+            border-radius: 8px;
+            background-color: #e9ecef;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .details.active {
             display: block;
         }
+
         .details-trigger {
             cursor: pointer;
-            color: blue;
-            text-decoration: underline;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .details-trigger:hover::after {
+            content: ' \25BC'; /* Downward triangle icon */
+            position: absolute;
+            right: -20px;
+            top: 0;
+        }
+
+        .details img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .details h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .details p {
+            color: #555;
+        }
+
+        .action-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .action-links a, .action-links button {
+            display: inline-block;
+            padding: 10px 15px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .action-links a {
+            background-color: #007bff;
+        }
+
+        .action-links a:hover {
+            background-color: #0056b3;
+        }
+
+        .action-links button {
+            background-color: #dc3545;
+        }
+
+        .action-links button:hover {
+            background-color: #c82333;
         }
     </style>
-    {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-    {{-- <script>
-        $(document).ready(function() {
-            $('.details-trigger').hover(function() {
-                $(this).next('.details').toggleClass('active');
-            });
-        });
-    </script> --}}
 </head>
 <body>
-    <h1>Details</h1>
-    {{-- <a href="{{ route('details.create') }}">Add New Detail</a> --}}
-    <div class="details">
-        <h3>{{ $post->title }}</h3>
-        <img class="img-fluid" style="max-width:25%;" src="{{ asset('images/'.$post->image)}}" alt="">
-        <p>{{ $post->description }}</p>  
-    </div>
+    <div class="container">
+        <h1>Details</h1>
+        <div class="details">
+            <h3>{{ $post->title }}</h3>
+            <img class="img-fluid" src="{{ asset('images/'.$post->image)}}" alt="">
+            <p>{{ $post->description }}</p>
+        </div>
         <div>
             <h2>{{ $post->description }}</h2>
-            <a href="{{ route('details.show', $post->id) }}">View</a>
-            <a href="{{ route('details.edit', $post->id) }}">Edit</a>
-            <form action="{{ route('details.destroy', $post->id) }}" method="POST" style="display:inline;">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Delete</button>
-            </form>
+            <div class="action-links">
+                <a href="{{ route('details.show', $post->id) }}">View</a>
+                <a href="{{ route('details.edit', $post->id) }}">Edit</a>
+                <form action="{{ route('details.destroy', $post->id) }}" method="POST" style="display:inline;">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Delete</button>
+                </form>
+            </div>
         </div>
         <div>
             <p>
                 {{ $post->short_description }}
-                <span class="details-trigger">Hover here for details</span>.
+                <span class="details-trigger" onclick="toggleDetails()">Hover here for details</span>.
             </p>
-           
         </div>
+    </div>
 
+    <script>
+        function toggleDetails() {
+            const details = document.querySelector('.details');
+            details.classList.toggle('active');
+        }
+    </script>
 </body>
-</html> 
+</html>
