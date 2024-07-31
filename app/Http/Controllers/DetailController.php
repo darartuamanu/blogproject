@@ -29,29 +29,29 @@ class DetailController extends Controller
         return redirect()->route('details.index')->with('success', 'Detail created successfully.');
     }
 
-    public function show($id)
-    {
-        $detail = Detail::find($id);
-        return view('details.show', compact('detail'));
-    }
+   // public function show($id)
+   // {
+       // $detail = Detail::find($id);
+        //return view('details.show', compact('detail'));
+    //}
 
-    public function edit($id)
-    {
-        $detail = Detail::find($id);
-        return view('details.edit', compact('detail'));
-    }
+    //public function edit($id)
+    //{
+        //$detail = Detail::find($id);
+        //return view('details.update', compact('detail'));
+    //}
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'description' => 'required',
-        ]);
+    //public function update(Request $request, $id)
+   // {
+        //$request->validate([
+            //'description' => 'required',
+       // ]);
 
-        $detail = Detail::find($id);
-        $detail->update($request->all());
+       // $detail = Detail::find($id);
+        //$detail->update($request->all());
 
-        return redirect()->route('details.index')->with('success', 'Detail updated successfully.');
-    }
+        //return redirect()->route('details.index')->with('success', 'Detail updated successfully.');
+    //}
 
     public function destroy($id)
 {

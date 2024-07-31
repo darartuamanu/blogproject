@@ -63,7 +63,7 @@
         <a href="{{ route('home') }}"><i class="fas fa-home"></i> Home</a>
         {{--<a href="{{ route('post', ['id' => $posts]) }}">posts</a>--}}
 
-        <a href="{{ route('dashboard.posts.create') }}"><i class="fas fa-plus"></i> Add Post</a>
+        <a href="{{ route('create') }}"><i class="fas fa-plus"></i> Add Post</a>
         <a href="{{ route('logout') }}"
            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
             

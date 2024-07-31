@@ -79,7 +79,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/post/{id}', [PostController::class, 'show'])->name('post');
-Route::get('/dashboard/posts/create', [PostController::class, 'create'])->name('dashboard.posts.create');
+Route::get('create', [PostController::class, 'create'])->name('create');
+
+Route::get('/details/{id}/edit', [DetailController::class, 'edit'])->name('details.edit');
+
 
 
 

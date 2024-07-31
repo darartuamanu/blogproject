@@ -9,8 +9,8 @@
         body {
             font-family: 'Roboto', sans-serif;
             line-height: 1.6;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #000;
+            color: #fff;
             padding: 20px;
         }
 
@@ -21,7 +21,7 @@
 
         h1 {
             text-align: center;
-            color: #007bff;
+            color: #1e90ff;
             margin-bottom: 20px;
         }
 
@@ -29,10 +29,10 @@
             display: none;
             margin-top: 10px;
             padding: 15px;
-            border: 1px solid #007bff;
+            border: 1px solid #1e90ff;
             border-radius: 8px;
-            background-color: #e9ecef;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
         }
 
         .details.active {
@@ -41,7 +41,7 @@
 
         .details-trigger {
             cursor: pointer;
-            color: #007bff;
+            color: #1e90ff;
             text-decoration: none;
             font-weight: 700;
             position: relative;
@@ -62,11 +62,11 @@
 
         .details h3 {
             margin-top: 0;
-            color: #333;
+            color: #fff;
         }
 
         .details p {
-            color: #555;
+            color: #ccc;
         }
 
         .action-links {
@@ -88,11 +88,11 @@
         }
 
         .action-links a {
-            background-color: #007bff;
+            background-color: #1e90ff;
         }
 
         .action-links a:hover {
-            background-color: #0056b3;
+            background-color: #1c86ee;
         }
 
         .action-links button {
@@ -115,8 +115,8 @@
         <div>
             <h2>{{ $post->description }}</h2>
             <div class="action-links">
-                <a href="{{ route('details.show', $post->id) }}">View</a>
-                <a href="{{ route('details.edit', $post->id) }}">Edit</a>
+                {{-- <a href="{{ route('details.show', $post->id) }}">View</a> --}}
+                {{-- <a href="{{ route('details.edit', $post->id) }}">Edit</a> --}}
                 <form action="{{ route('details.destroy', $post->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')

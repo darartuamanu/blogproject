@@ -111,9 +111,9 @@
                                             <!--<li>
                                                 <a href="marketing.html">Marketing</a>
                                             </li>-->
-                                            <li>
+                                           <!-- <li>
                                                 <a href="/create">Add Post</a>
-                                            </li>
+                                            </li>-->
 
                                             <!--<li>
                                                 <a href="contact.html">dashboard</a>
