@@ -24,7 +24,9 @@
                 <input class="form-control" type="text" name="title" id="title" onfocus="this.style.border = '1px solid #80bdff';" onblur="this.style.border = '1px solid #ccc';"><br><br>
 
                 <label for="description">Description:</label>
-                <textarea id="description" name="description" rows="4" cols="50" class="form-control" style="width: 100%;"></textarea><br>
+                <textarea id="description" name="description" rows="4" cols="50" class="form-control" style="width: 100%;" maxlength="400"></textarea><br>
+                <!--<div id="charCount">400 characters remaining</div>-->
+
 
                 <label for="image" class="form-label">Add Image</label>
                 <input type="file" class="form-control" id="image" name="image" accept="image/*" required><br>

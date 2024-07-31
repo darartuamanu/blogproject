@@ -82,6 +82,8 @@ Route::get('/post/{id}', [PostController::class, 'show'])->name('post');
 Route::get('create', [PostController::class, 'create'])->name('create');
 
 Route::get('/details/{id}/edit', [DetailController::class, 'edit'])->name('details.edit');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+
 
 
 

@@ -36,7 +36,7 @@ class PostController extends Controller
         // Validations
         $request->validate([
             'title' => 'required',
-            'description' => 'required|max:400',
+            'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
         ]);
@@ -59,7 +59,7 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.details', compact('post'));
+        return view('posts.show', compact('post'));
     }
 
     // Destroy method to delete a post
@@ -78,6 +78,7 @@ class PostController extends Controller
 
         return view('posts.edit', compact('post'));
     }
+    
 
     public function update(Request $request,  $id) 
     {
@@ -94,7 +95,7 @@ class PostController extends Controller
         // Validate the request data
         $request->validate([
             'title' => 'required|max:255|unique:posts,title,' . $post->id,
-            'description' => 'required|max:400',
+            'description' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
