@@ -37,7 +37,7 @@ class DashboardController extends Controller
 
         $post->update($request->all());
 
-        return redirect()->route('dashboard.')->with('success', 'Post updated successfully.');
+        return redirect()->route('dashboard')->with('success', 'Post updated successfully.');
     }
 
     public function destroy($id)

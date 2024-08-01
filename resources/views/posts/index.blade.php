@@ -24,7 +24,8 @@
                     <div class="full blog_cont">
                         <h4><a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h4>
                         <h5>{{ $post->created_at->diffForHumans() }}</h5>
-                        <p>{{ $post->description }}</p>
+                       <p> {{Str::limit($post->description )}}</p>
+                        
                         <hr>
                         
                         <!-- Edit Button -->

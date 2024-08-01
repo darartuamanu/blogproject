@@ -83,13 +83,15 @@ class PostController extends Controller
     public function update(Request $request,  $id) 
     {
         $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
 
-        if ($request->user()->cannot('update', $post)) {
-            dd($request->user()->cannot('update', $post));
-            return redirect()->route('posts.index')->with('error','cannot update');
-            abort(403); 
+
+        //if ($request->user()->cannot('update', $post)) {
+           // dd($request->user()->cannot('update', $post));
+            //return redirect()->route('posts.index')->with('error','cannot update');
+            //abort(403); 
             
-        }
+        //}
 
 
         // Validate the request data

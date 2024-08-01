@@ -11,8 +11,8 @@ class DetailsController extends Controller
     $details = [
         'title' => 'Product Details',
         'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        'price' => '$49.99',
-        'availability' => 'In Stock',
+        
+        
     ];
 
     return view('details', ['details' => $details]);

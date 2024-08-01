@@ -105,9 +105,9 @@
                                             <li class="active">
                                                 <a href="home">Home</a>
                                             </li>
-                                            <li>
+                                           <!-- <li>
                                                 <a href="about.html">About</a>
-                                            </li>
+                                            </li>-->
                                             <!--<li>
                                                 <a href="marketing.html">Marketing</a>
                                             </li>-->

@@ -26,6 +26,7 @@
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="4" cols="50" class="form-control" style="width: 100%;" maxlength="400"></textarea><br>
                 <!--<div id="charCount">400 characters remaining</div>-->
+                
 
 
                 <label for="image" class="form-label">Add Image</label>

@@ -83,6 +83,9 @@ Route::get('create', [PostController::class, 'create'])->name('create');
 
 Route::get('/details/{id}/edit', [DetailController::class, 'edit'])->name('details.edit');
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/dashboard/posts/{id}/edit', [PostController::class, 'edit'])->name('dashboard.posts.edit');
+
+
 
 
 

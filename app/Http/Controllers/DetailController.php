@@ -62,4 +62,5 @@ class DetailController extends Controller
     } else {
         dd("Detail not found with ID: ".$id);
     }
+    
 }}
