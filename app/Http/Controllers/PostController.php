@@ -21,8 +21,11 @@ class PostController extends Controller
     // Index method to display posts
     public function index()
     {
-        $posts = Post::where('status', 'published')->get();
-        return view('posts.index', ['posts' => $posts]);
+        $posts = Post::where('status', 'published')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+return view('posts.index', ['posts' => $posts]);
     }
 
     // Create method to show the create post form
