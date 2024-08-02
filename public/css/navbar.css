@@ -1,0 +1,58 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    position: relative; /* Ensure positioning context for absolute positioning */
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+.search-container {
+    position: relative; /* Position relative for absolute positioning of children */
+}
+
+.search-icon {
+    cursor: pointer;
+}
+
+.search-form {
+    display: none;
+    position: absolute;
+    top: 50px; /* Adjust based on your navbar height */
+    right: 0;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-form input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.search-form button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #1e90ff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background-color: #1c86ee;
+}

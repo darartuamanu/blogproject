@@ -18,6 +18,7 @@ use Illuminate\Auth\Access\Response;
      * @return mixed
      */
    
+     
      /*public function update(User $user, Post $post): Response
     {
         return $user->hasRole('super-admin') || $user->id === $post->user_id

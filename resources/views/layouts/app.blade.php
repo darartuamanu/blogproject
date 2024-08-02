@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- site metas -->
+   
     <title> Blog</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -29,7 +29,11 @@
     <link rel="icon" href="{{ asset('images/fevicon.png" type="image/gif') }}">
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    
 
     <!-- Vite JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -142,10 +146,14 @@
                                              </li>
                                            @endif
                                      
-                                            <li>
-                                                <a href="#"><img src="images/search_icon.png"
-                                                        alt="#" /></a>
-                                            </li>
+                                           <li class="search-icon">
+                                            <a href="#" onclick="toggleSearchForm(event)">
+                                                <img src="images/search_icon.png" alt="Search Icon" />
+                                            </a>
+                                        </li>
+                                        <li class="search-input">
+                                            <input type="text" id="search" placeholder="Search posts...">
+                                        </li>>
                                         </ul>
                                     </nav>
                                 </div>
@@ -269,6 +277,34 @@
                 <!-- Scrollbar Js Files -->
                 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
                 <script src="js/custom.js"></script>
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#search").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: "{{ route('search') }}",
+                        type: 'GET',
+                        data: {
+                            query: request.term
+                        },
+                        success: function(data) {
+                            response($.map(data, function(item) {
+                                // Modify this to include description in the label if desired
+                                return {
+                                    label: item.title + ' - ' + item.description,
+                                    value: item.title
+                                };
+                            }));
+                        }
+                    });
+                },
+                minLength: 2
+            });
+        });
+    </script>
                 
                 
     </body>

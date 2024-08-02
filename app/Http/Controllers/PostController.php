@@ -1,32 +1,33 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Middleware\CheckAdmin;
+
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\RedirectResponse;
 
 class PostController extends Controller
 {
     use AuthorizesRequests;
 
     public function __construct()
-    {   
-       // $this->middleware('auth'); // todo
+    {
+        //$this->middleware('auth'); // Ensure all methods require authentication
     }
 
     // Index method to display posts
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = Post::where('status', 'published')->get();
         return view('posts.index', ['posts' => $posts]);
     }
 
     // Create method to show the create post form
     public function create()
     {
-    
         return view('posts.create');
     }
 
@@ -38,38 +39,42 @@ class PostController extends Controller
             'title' => 'required',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-
+           'status' => 'required|in:draft,published,archived',
         ]);
 
         // Handle image upload
-        $file = request()->file('image');
+        $file = $request->file('image');
         $file_name = time() . '.' . $file->getClientOriginalExtension();
         $file->move(public_path('images'), $file_name);
-  
+
         $data = $request->all();
         $data['image'] = $file_name;
-          
-        $data['user_id'] = auth()->user()-> id;
+        $data['user_id'] = auth()->user()->id;
+
         // Create new Post instance and save
         Post::create($data);
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
 
+    // Show method to display a single post
     public function show($id)
-    {
-        $post = Post::findOrFail($id);
-        return view('posts.show', compact('post'));
-    }
-
+{
+    $post = Post::findOrFail($id);
+    return view('posts.details', compact('post')); // Ensure 'details' is the correct view name
+}
     // Destroy method to delete a post
     public function destroy(Request $request, Post $post): RedirectResponse
     {
-        if ($request->user()->cannot('destroy', $post)) {
-            abort(403);
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
-    }}
+        $this->authorize('destroy', $post);
 
+        // Delete the post
+        $post->delete();
+
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
+    }
+
+    // Edit method to show the edit post form
     public function edit($id)
     {
         $post = Post::findOrFail($id);
@@ -78,27 +83,20 @@ class PostController extends Controller
 
         return view('posts.edit', compact('post'));
     }
-    
 
-    public function update(Request $request,  $id) 
+    // Update method to handle post updates
+    public function update(Request $request, $id)
     {
         $post = Post::findOrFail($id);
-        return view('posts.edit', compact('post'));
 
-
-        //if ($request->user()->cannot('update', $post)) {
-           // dd($request->user()->cannot('update', $post));
-            //return redirect()->route('posts.index')->with('error','cannot update');
-            //abort(403); 
-            
-        //}
-
+        $this->authorize('update', $post);
 
         // Validate the request data
         $request->validate([
             'title' => 'required|max:255|unique:posts,title,' . $post->id,
             'description' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'status' => 'required|in:draft,published,archived',
         ]);
 
         // Handle image upload if present
@@ -117,4 +115,3 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with('success', 'Post updated successfully');
     }
 }
-
