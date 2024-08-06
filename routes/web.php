@@ -102,4 +102,4 @@ Route::get('/post/{id}', [PostController::class, 'show'])->name('posts.show');
 
 
   
- // Route::get('/dashboard', [PostController::class,'index'])->middleware('auth');
+ // Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');

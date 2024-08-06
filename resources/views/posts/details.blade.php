@@ -11,12 +11,12 @@
             <p>{{ $post->description }}</p>
         </div>
         <div>
-            <p>
+            {{--<p>
                 
                 <span class="details-trigger" onclick="toggleDetails()">Hover here for details</span>.
-            </p>
-        </div>
-        <div class="action-links">
+            </p>--}}
+        {{--</div>
+        <div class="action-links">--}}
             {{-- <a href="{{ route('details.show', $post->id) }}">View</a> --}}
             {{-- <a href="{{ route('details.edit', $post->id) }}">Edit</a> --}}
             {{--<form action="{{ route('details.destroy', $post->id) }}" method="POST" style="display:inline;">
