@@ -30,7 +30,7 @@ Route::resource('/', PostController::class)->names([
   'show' => 'posts.show',
 ]);
 
-Route::delete('/details/{id}', [DetailController::class, 'destroy'])->name('details.destroy');
+//Route::delete('/details/{id}', [DetailController::class, 'destroy'])->name('details.destroy');
 Route::get('/posts/{id}', [PostController::class, 'show']);
 Route::post('post-login', [AuthController::class, 'postLogin'])->name('login.post');
 Route::get('registration', [AuthController::class, 'registration'])->name('register');
@@ -76,6 +76,9 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
+
+
+
 // Logout route
 
 
@@ -91,15 +94,11 @@ Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::get('/post/{id}', [PostController::class, 'show'])->name('posts.show');
 
+Route::get('/search', [SearchController::class, 'showSearchForm'])->name('search.form');
+
+Route::get('/search/results', [SearchController::class, 'search'])->name('search.results');
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 
 
 
-
-
-
-
-
-
-
-  
- // Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');
+// Route::get('/dashboard', [DashboardController::class,'index'])->middleware('auth');

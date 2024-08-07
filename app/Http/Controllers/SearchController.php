@@ -1,21 +1,28 @@
 <?php
 
-// app/Http/Controllers/SearchController.php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    // Display the search form
+    public function showSearchForm()
+    {
+        return view('search.form');
+    }
+
+    // Handle the search request
     public function search(Request $request)
     {
-        $query = $request->get('query');
-        $results = Post::where(function($q) use ($query) {
-            $q->where('title', 'LIKE', "%{$query}%")
-              ->orWhere('description', 'LIKE', "%{$query}%");
-        })->get();
+        $request->validate([
+            'query' => 'required|string|max:255',
+        ]);
 
-        return response()->json($results);
+        $query = $request->input('query');
+        $posts = Post::where('title', 'like', "%{$query}%")->get();
+
+        return view('search.results', ['posts' => $posts, 'query' => $query]);
     }
 }

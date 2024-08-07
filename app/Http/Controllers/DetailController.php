@@ -53,14 +53,15 @@ class DetailController extends Controller
         //return redirect()->route('details.index')->with('success', 'Detail updated successfully.');
     //}
 
-    public function destroy($id)
-{
-    $detail = Detail::findOrFail($id);
-    if ($detail) {
-        $detail->delete();
-        return redirect()->route('details.index')->with('success', 'Detail deleted successfully.');
-    } else {
-        dd("Detail not found with ID: ".$id);
-    }
+   // public function destroy($id)
+//{
+   // $detail = Detail::findOrFail($id);
+    //if ($detail) {
+       // $detail->delete();
+       // return redirect()->route('details.index')->with('success', 'Detail deleted successfully.');
+    //} else {
+        //dd("Detail not found with ID: ".$id);
+   // }
     
-}}
+//}
+}

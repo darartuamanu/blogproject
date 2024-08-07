@@ -151,9 +151,12 @@
                                                 <img src="images/search_icon.png" alt="Search Icon" />
                                             </a>
                                         </li>
-                                        <li class="search-input">
-                                            <input type="text" id="search" placeholder="Search posts...">
-                                        </li>>
+                                        <form action="{{ route('search.results') }}" method="GET" class="d-flex">
+                                            @csrf
+                                            <input type="text" name="query" class="form-control me-2" placeholder="Search..." value="{{ old('query') }}">
+                                            <button type="submit" class="btn btn-outline-success">Search</button>
+                                        </form>
+                                        
                                         </ul>
                                     </nav>
                                 </div>
@@ -295,13 +298,13 @@
                                 // Modify this to include description in the label if desired
                                 return {
                                     label: item.title + ' - ' + item.description,
-                                    value: item.title
+                                    value: item.title + '-' + item.description,
                                 };
                             }));
                         }
                     });
                 },
-                minLength: 2
+                minLength: 4
             });
         });
     </script>

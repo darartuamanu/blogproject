@@ -19,7 +19,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>user_id</th>
+                    <th>post_id</th>
                     <th>Title</th>
                 </tr>
             </thead>
