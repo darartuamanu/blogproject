@@ -67,9 +67,10 @@ return view('posts.index', ['posts' => $posts]);
     return view('posts.details', compact('post')); // Ensure 'details' is the correct view name
 }
     // Destroy method to delete a post
-    public function destroy(Request $request, Post $post): RedirectResponse
+    public function destroy(Request $request, Post $post)
     {
-        $this->authorize('destroy', $post);
+        dd('dd');
+        // $this->authorize('destroy', $post);
 
         // Delete the post
         $post->delete();
@@ -82,7 +83,7 @@ return view('posts.index', ['posts' => $posts]);
     {
         $post = Post::findOrFail($id);
 
-        $this->authorize('update', $post);
+        //$this->authorize('update', $post);
 
         return view('posts.edit', compact('post'));
     }
@@ -92,7 +93,7 @@ return view('posts.index', ['posts' => $posts]);
     {
         $post = Post::findOrFail($id);
 
-        $this->authorize('update', $post);
+       // $this->authorize('update', $post);
 
         // Validate the request data
         $request->validate([

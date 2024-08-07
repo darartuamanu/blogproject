@@ -41,17 +41,26 @@ class DetailController extends Controller
         //return view('details.update', compact('detail'));
     //}
 
-    //public function update(Request $request, $id)
-   // {
-        //$request->validate([
-            //'description' => 'required',
-       // ]);
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'description' => 'required',
+    ]);
 
-       // $detail = Detail::find($id);
-        //$detail->update($request->all());
+    // Find the Detail model by ID
+    $detail = Detail::find($id);
 
-        //return redirect()->route('details.index')->with('success', 'Detail updated successfully.');
-    //}
+    // Check if the model exists
+    if (!$detail) {
+        return redirect()->route('details.index')->with('error', 'Detail not found.');
+    }
+
+    // Update the detail
+    $detail->update($request->all());
+
+    return redirect()->route('details.index')->with('success', 'Detail updated successfully.');
+}
+
 
    // public function destroy($id)
 //{

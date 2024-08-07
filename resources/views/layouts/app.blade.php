@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-   
+
     <title> Blog</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -31,25 +31,20 @@
     <link rel="stylesheet" href="{{ asset('css/jquery.mCustomScrollbar.min.css') }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
-    
+
 
     <!-- Vite JS -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
 <body data-bs-spy="scroll" data-bs-target="#navbar-example" tabindex="0">
-    
+
     <!-- Navbar -->
 
     <body class="main-layout">
-        <!-- loader  -->
-       <!-- <div class="loader_bg">
-            <div class="loader"><img src="images/loading.gif" alt="" /></div>
-        </div>-->
-        <!-- end loader -->
-        <!-- header -->
+
         <header>
             <!-- header inner -->
             <div class="container">
@@ -68,35 +63,13 @@
                         <p>{{ $message }}</p>
                     </div>
                 @endif
-                {{--                
-                @forelse ($posts as $post)
-                    
-               
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <img class="img-fluid"
-                                            style="max-width:50%;float: left; margin-right: 20px; width: 200px; height: auto;">"
-                                        src="{{ asset('images/' . $post->image) }}" alt="" >
-                                    </div>
-                                    <div class="col-10">
-                                        <h4> <a href="/posts/{{ $post->id }}">{{ $post->title }}</a></h4>
-                                    </div>
-                                </div>
-                                <p>{{ $post->description }}</p>
-                                <hr>
-                            </div>
-                        </div>
-                        @empty
-                    
-                        @endforelse --}}
+
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-2 logo_section">
                             <div class="full">
                                 <div class="center-desk">
-                                    <div class="logo"> <a href="index.html"><img src="images/logo.png"
+                                    <div class="logo"> <a href="index.html"><img src="{{ asset('images/logo.png') }}"
                                                 alt="#"></a> </div>
                                 </div>
                             </div>
@@ -109,54 +82,45 @@
                                             <li class="active">
                                                 <a href="home">Home</a>
                                             </li>
-                                           <!-- <li>
-                                                <a href="about.html">About</a>
-                                            </li>-->
-                                            <!--<li>
-                                                <a href="marketing.html">Marketing</a>
-                                            </li>-->
-                                           <!-- <li>
-                                                <a href="/create">Add Post</a>
-                                            </li>-->
 
-                                            <!--<li>
-                                                <a href="contact.html">dashboard</a>
-                                            </li>-->
-                                            @if(Auth::check())
-                                            <li>
-                                    <a href="{{ route('dashboard') }}">Dashboard</a>
-                                   </li>
-                                   <!-- Logout link visible only to authenticated users -->
-                                   <li>
-                                   <a href="{{ route('logout') }}"
-                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                   Logout
-                                   </a>
-                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                          </form>
-                                              </li>
-                                           @else
-                                       <!-- Login and Register links visible only to guests -->
-                                         <li>
-                                          <a href="{{ route('login') }}">Login</a>
-                                          </li>
-                                          <li>
-                                        <a href="{{ route('register') }}">Register</a>
-                                             </li>
-                                           @endif
-                                     
-                                           <li class="search-icon">
-                                            <a href="#" onclick="toggleSearchForm(event)">
-                                                <img src="images/search_icon.png" alt="Search Icon" />
-                                            </a>
-                                        </li>
-                                        <form action="{{ route('search.results') }}" method="GET" class="d-flex">
-                                            @csrf
-                                            <input type="text" name="query" class="form-control me-2" placeholder="Search..." value="{{ old('query') }}">
-                                            <button type="submit" class="btn btn-outline-success">Search</button>
-                                        </form>
-                                        
+                                            @if (Auth::check())
+                                                <li>
+                                                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                                                </li>
+                                                <!-- Logout link visible only to authenticated users -->
+                                                <li>
+                                                    <a href="{{ route('logout') }}"
+                                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                        Logout
+                                                    </a>
+                                                    <form id="logout-form" action="{{ route('logout') }}"
+                                                        method="POST" style="display: none;">
+                                                        @csrf
+                                                    </form>
+                                                </li>
+                                            @else
+                                                <!-- Login and Register links visible only to guests -->
+                                                <li>
+                                                    <a href="{{ route('login') }}">Login</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ route('register') }}">Register</a>
+                                                </li>
+                                            @endif
+
+                                            <li class="search-icon">
+                                                <a href="#" onclick="toggleSearchForm(event)">
+                                                    <img src="{{ asset('images/search_icon.png') }}"
+                                                        alt="Search Icon" />
+                                                </a>
+                                            </li>
+                                            <form action="{{ route('search.results') }}" method="GET" class="d-flex">
+                                                @csrf
+                                                <input type="text" name="query" class="form-control me-2"
+                                                    placeholder="Search..." value="{{ old('query') }}">
+                                                <button type="submit" class="btn btn-outline-success">Search</button>
+                                            </form>
+
                                         </ul>
                                     </nav>
                                 </div>
@@ -166,20 +130,20 @@
                 </div>
                 <!-- end header inner -->
         </header>
-        
+
         @yield('content')<br><br>
-        
+
         <footer>
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-md-6">
-                        <a href="#"><img src="images/logo.png" alt="#" /></a>
+                        <a href="#"><img src="{{ asset('images/logo.png') }}" alt="#" /></a>
                         <ul class="contact_information">
-                            <li><span><img src="images/location_icon.png" alt="#" /></span><span
-                                    class="text_cont">addis<br>Ethiopia</span></li>
-                            <li><span><img src="images/phone_icon.png" alt="#" /></span><span
+                            <li><span><img src="{{ asset('images/location_icon.png') }}" alt="#" /></span>
+                                class="text_cont">addis<br>Ethiopia</span></li>
+                            <li><span><img src="{{ asset('images/phone_icon.png') }}" alt="#" /></span><span
                                     class="text_cont">09 11 12 13 14<br>09 00 00 00 00</span></li>
-                            <li><span><img src="images/mail_icon.png" alt="#" /></span><span
+                            <li><span><img src="{{ asset('images/mail_icon.png') }}" alt="#" /></span><span
                                     class="text_cont">darartuamanu6@gmail.com<br></span></li>
                         </ul>
                         <ul class="social_icon">
@@ -214,10 +178,15 @@
                         <div class="footer_links">
                             <h3>Instagram</h3>
                             <ol>
-                                <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                                <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                                <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
-                                <li><img class="img-responsive" src="images/footer_blog.png" alt="#" /></li>
+                                <li><img class="img-responsive" src="{{ asset('images/footer_blog.png') }}"
+                                        alt="#" /></li>
+                                <li><img class="img-responsive" src="{{ asset('images/footer_blog.png') }}"
+                                        alt="#" /></li>
+                                <li><img class="img-responsive" src="{{ asset('images/footer_blog.png') }}"
+                                        alt="#" /></li>
+                                <li><img class="img-responsive" src="{{ asset('images/footer_blog.png') }}"
+                                        alt="#" /></li>
+
                             </ol>
                         </div>
                     </div>
@@ -265,51 +234,52 @@
 
 
 
-       
 
-                <!-- Scripts -->
-                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-                </script>
-                <script src="{{ asset('js/jquery.min.js') }}"></script>
-                <script src="{{ asset('js/popper.min.js') }}"></script>
-                <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-                <script src="{{ asset('js/jquery-3.0.0.min.js') }}"></script>
-                <script src="{{ asset('js/plugin.js') }}"></script>
-                <!-- Scrollbar Js Files -->
-                <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-                <script src="js/custom.js"></script>
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            $("#search").autocomplete({
-                source: function(request, response) {
-                    $.ajax({
-                        url: "{{ route('search') }}",
-                        type: 'GET',
-                        data: {
-                            query: request.term
-                        },
-                        success: function(data) {
-                            response($.map(data, function(item) {
-                                // Modify this to include description in the label if desired
-                                return {
-                                    label: item.title + ' - ' + item.description,
-                                    value: item.title + '-' + item.description,
-                                };
-                            }));
-                        }
-                    });
-                },
-                minLength: 4
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
+        </script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/popper.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/jquery-3.0.0.min.js') }}"></script>
+        <script src="{{ asset('js/plugin.js') }}"></script>
+        <!-- Scrollbar Js Files -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $("#search").autocomplete({
+                    source: function(request, response) {
+                        $.ajax({
+                            url: "{{ route('search') }}",
+                            type: 'GET',
+                            data: {
+                                query: request.term
+                            },
+                            success: function(data) {
+                                response($.map(data, function(item) {
+                                    // Modify this to include description in the label if desired
+                                    return {
+                                        label: item.title + ' - ' + item
+                                            .description,
+                                        value: item.title + '-' + item.description,
+                                    };
+                                }));
+                            }
+                        });
+                    },
+                    minLength: 4
+                });
             });
-        });
-    </script>
-                
-                
+        </script>
+
+
     </body>
 
 </html>

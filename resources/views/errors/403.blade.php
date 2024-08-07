@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{--<!DOCTYPE html>
 <html>
 <head>
     <title>403 Forbidden</title>
@@ -9,3 +9,4 @@
     <a href="{{ route('login') }}">Login</a>
 </body>
 </html>
+--}}

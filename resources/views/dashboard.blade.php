@@ -8,7 +8,7 @@
                 </div>
             @endif
 
-             <h1 class="display-5 fw-bold">Hi, {{ auth()->user()->name }}</h1> 
+            <h1 class="display-5 fw-bold">Hi, {{ auth()->user()->name }}</h1>
             <p class="col-md-8 fs-4">Welcome to blog.<br /></p>
         </div>
     </div>
@@ -30,10 +30,10 @@
                         <td>{{ $post->title }}</td>
                         <td>
                             <!-- Edit Button -->
-                            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
+                            <a href="{{ route('dashboard.posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
 
                             <!-- Delete Form -->
-                            <form action="{{ route('posts.destroy', $post->id) }}" method="POST" style="display:inline;">
+                            <form action="{{ route('dashboard.posts.destroy', $post->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger"
