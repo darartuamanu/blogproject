@@ -14,6 +14,8 @@ use App\Models\Post;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\PostPublishedController;
+
 
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -46,9 +48,9 @@ Route::get('/home', [PostController::class, 'index'])->name('home');
 Route::get('/posts', 'PostController@index')->name('post.index');
 Route::get('/description', [PostController::class, 'description']);
 Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
-Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+//Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 
-Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+//Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 
 Route::post('/register', [RegisterController::class, 'register']); //->name('register.post');
@@ -76,16 +78,10 @@ Route::middleware(['auth'])->group(function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
 
-
-
-
-// Logout route
-
-
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/post/{id}', [PostController::class, 'show'])->name('post');
 
-Route::get('/details/{id}/edit', [DetailController::class, 'edit'])->name('details.edit');
+//Route::get('/details/{id}/edit', [DetailController::class, 'edit'])->name('details.edit');
 Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
 Route::get('/dashboard/posts/{id}/edit', [PostController::class, 'edit'])->name('dashboard.posts.edit');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
@@ -98,6 +94,18 @@ Route::get('/search', [SearchController::class, 'showSearchForm'])->name('search
 
 Route::get('/search/results', [SearchController::class, 'search'])->name('search.results');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+Route::get('/posts/published', [PostController::class, 'publishPost'])->name('posts.published');
+Route::group(['middleware' => 'admin'], function () {
+  Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+  
+});
+Route::middleware(['auth', 'admin'])->group(function () {
+  Route::get('/users', [UserController::class, 'index'])->name('users.index');
+  Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+  Route::post('/users/{id}', [UserController::class, 'update'])->name('users.update');
+});
+
+
 
 
 

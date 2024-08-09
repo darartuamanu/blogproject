@@ -16,4 +16,5 @@ class CheckAdmin
 
         return redirect('/home')->with('error', 'You do not have admin access');
     }
+    
 }

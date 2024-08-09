@@ -108,18 +108,14 @@
                                                 </li>
                                             @endif
 
-                                            <li class="search-icon">
-                                                <a href="#" onclick="toggleSearchForm(event)">
-                                                    <img src="{{ asset('images/search_icon.png') }}"
-                                                        alt="Search Icon" />
-                                                </a>
-                                            </li>
-                                            <form action="{{ route('search.results') }}" method="GET" class="d-flex">
+                                           
+                                            <form action="{{ route('search.results') }}" method="GET" class="d-flex align-items-center justify-content-end custom-form">
                                                 @csrf
-                                                <input type="text" name="query" class="form-control me-2"
-                                                    placeholder="Search..." value="{{ old('query') }}">
+                                                <input type="text" name="query" class="form-control me-2" placeholder="Search..." value="{{ old('query') }}">
                                                 <button type="submit" class="btn btn-outline-success">Search</button>
                                             </form>
+                                            
+                                            
 
                                         </ul>
                                     </nav>
@@ -139,7 +135,7 @@
                     <div class="col-lg-4 col-md-6">
                         <a href="#"><img src="{{ asset('images/logo.png') }}" alt="#" /></a>
                         <ul class="contact_information">
-                            <li><span><img src="{{ asset('images/location_icon.png') }}" alt="#" /></span>
+                            <li><span><img src="{{ asset('images/location_icon.png') }}" alt="#" /></span><span>
                                 class="text_cont">addis<br>Ethiopia</span></li>
                             <li><span><img src="{{ asset('images/phone_icon.png') }}" alt="#" /></span><span
                                     class="text_cont">09 11 12 13 14<br>09 00 00 00 00</span></li>
@@ -266,15 +262,14 @@
                                 response($.map(data, function(item) {
                                     // Modify this to include description in the label if desired
                                     return {
-                                        label: item.title + ' - ' + item
-                                            .description,
-                                        value: item.title + '-' + item.description,
+                                        label: item.title + ' - ' + item.description,
+                                        value: item.title 
                                     };
                                 }));
                             }
                         });
                     },
-                    minLength: 4
+                    minLength: 3
                 });
             });
         </script>

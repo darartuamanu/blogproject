@@ -9,6 +9,8 @@
         <ul>
             @foreach($posts as $post)
                 <li><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></li>
+                <img src="{{ asset('images/' . $post->image) }}" alt="#" style="max-width: 100%; height: auto;">
+                <li><a href="{{ route('posts.show', $post->id) }}">{{ $post->description }}</a></li>
             @endforeach
         </ul>
     @endif

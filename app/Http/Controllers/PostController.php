@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
+use App\Mail\PostPublished;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -22,10 +24,10 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::where('status', 'published')
-        ->orderBy('created_at', 'desc')
-        ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-return view('posts.index', ['posts' => $posts]);
+        return view('posts.index', ['posts' => $posts]);
     }
 
     // Create method to show the create post form
@@ -42,7 +44,7 @@ return view('posts.index', ['posts' => $posts]);
             'title' => 'required',
             'description' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-           'status' => 'required|in:draft,published,archived',
+            'status' => 'required|in:draft,published,archived',
         ]);
 
         // Handle image upload
@@ -55,21 +57,22 @@ return view('posts.index', ['posts' => $posts]);
         $data['user_id'] = auth()->user()->id;
 
         // Create new Post instance and save
-        Post::create($data);
+       $post = Post::create($data);
+       $x= Mail::to('darartuamanu6@gmail.com')->send(new PostPublished($post));
 
-        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
+       return redirect()->route('posts.index')->with('success', 'Post published and notification sent.');
     }
 
     // Show method to display a single post
     public function show($id)
-{
-    $post = Post::findOrFail($id);
-    return view('posts.details', compact('post')); // Ensure 'details' is the correct view name
-}
+    {
+        $post = Post::findOrFail($id);
+        return view('posts.details', compact('post')); // Ensure 'details' is the correct view name
+    }
     // Destroy method to delete a post
     public function destroy(Request $request, Post $post)
     {
-        dd('dd');
+        //dd('dd');
         // $this->authorize('destroy', $post);
 
         // Delete the post
@@ -93,14 +96,14 @@ return view('posts.index', ['posts' => $posts]);
     {
         $post = Post::findOrFail($id);
 
-       // $this->authorize('update', $post);
+        // $this->authorize('update', $post);
 
         // Validate the request data
         $request->validate([
             'title' => 'required|max:255|unique:posts,title,' . $post->id,
             'description' => 'required',
             'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'status' => 'required|in:draft,published,archived',
+            'status' => 'required|in:draft,published,archived',
         ]);
 
         // Handle image upload if present
@@ -116,6 +119,17 @@ return view('posts.index', ['posts' => $posts]);
         $post->description = $request->input('description');
         $post->save();
 
-        return redirect()->route('posts.index')->with('success', 'Post updated successfully');
+        return redirect()->route('dashboard.posts.update')->with('success', 'Post updated successfully');
+    }
+    public function publishPost(Request $request)
+    {
+        $post = Post::find($request->post_id);
+
+        // Publish the post logic here...
+
+        // Send email notification
+        Mail::to('darartuamanu6@gmail.com')->send(new PostPublished($post));
+
+        return redirect()->route('posts.index')->with('success', 'Post published and notification sent.');
     }
 }

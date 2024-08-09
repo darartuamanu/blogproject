@@ -5,9 +5,19 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use App\Http\Middleware\CheckAdmin;
 
 class DashboardController extends Controller
-{ 
+
+
+{
+    
+    public function __construct()
+    {
+        $this->middleware('admin'); 
+    }
+
+
     public function index()
        
 {
@@ -51,4 +61,7 @@ class DashboardController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Post deleted successfully.');
     }
+    
 }
+
+

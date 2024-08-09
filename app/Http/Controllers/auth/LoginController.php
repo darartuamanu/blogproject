@@ -21,4 +21,16 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
     }
+    protected function credentials(Request $request)
+{
+    $credentials = $request->only('email', 'password');
+
+    // Custom logic for admin
+    if ($credentials['email'] == 'isadmin@gmail.com') {
+        $credentials['is_admin'] = true;
+    }
+
+    return $credentials;
+}
+
 }

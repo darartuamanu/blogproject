@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'user_id',
+        'is_admin',
     ];
 
     /**
@@ -53,6 +54,11 @@ class User extends Authenticatable
    public function post() {
     return $this->hasMany(Post::class, 'user_id');
    }
+   public function isAdmin()
+{
+    return $this->is_admin;
+}
+
 }
 
 
