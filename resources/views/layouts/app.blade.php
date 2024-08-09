@@ -112,8 +112,9 @@
                                             <form action="{{ route('search.results') }}" method="GET" class="d-flex align-items-center justify-content-end custom-form">
                                                 @csrf
                                                 <input type="text" name="query" class="form-control me-2" placeholder="Search..." value="{{ old('query') }}">
-                                                <button type="submit" class="btn btn-outline-success">Search</button>
+                                                <button type="submit" class="btn btn-outline-success" style="margin-left: auto;">Search</button>
                                             </form>
+                                            
                                             
                                             
 

@@ -15,6 +15,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\PostPublishedController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdminMiddleware;
 
 
 
@@ -75,8 +77,7 @@ Route::middleware(['auth'])->group(function () {
   Route::delete('/dashboard/posts/{id}', [DashboardController::class, 'destroy'])->name('dashboard.posts.destroy');
   Route::get('create', [PostController::class, 'create'])->name('create');
 });
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware('auth');
+
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/post/{id}', [PostController::class, 'show'])->name('post');
@@ -95,11 +96,14 @@ Route::get('/search', [SearchController::class, 'showSearchForm'])->name('search
 Route::get('/search/results', [SearchController::class, 'search'])->name('search.results');
 Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/posts/published', [PostController::class, 'publishPost'])->name('posts.published');
-Route::group(['middleware' => 'admin'], function () {
-  Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-  
+
+
+Route::middleware(['auth', AdminMiddleware::class])->group(function () { 
+  Route::get('/dashboard', [DashboardController::class,'index'] )->name('dashboard');//->middleware([AdminMiddleware::class]); 
+
 });
-Route::middleware(['auth', 'admin'])->group(function () {
+
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
   Route::get('/users', [UserController::class, 'index'])->name('users.index');
   Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
   Route::post('/users/{id}', [UserController::class, 'update'])->name('users.update');

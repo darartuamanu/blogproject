@@ -9,7 +9,7 @@
         
         <a href="{{ route('create') }}"><i class="fas fa-plus"></i> Add Post</a>
         @if(auth()->check() && auth()->user()->is_admin)
-        <a href="{{ route('create') }}">
+        <a href="{{ route('users.index') }}">
             <i class="fas fa-user"></i> User
         </a>
     @endif

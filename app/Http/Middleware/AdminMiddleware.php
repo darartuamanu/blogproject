@@ -14,15 +14,14 @@ class AdminMiddleware
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {
-         //Check if user is authenticated and has 'admin' role
-         if (Auth::check() && Auth::user()->hasRole('admin')) {
-            return $next($request);
+    { 
+         if (Auth::check() && Auth::user()->is_admin) {
+           return $next($request);
         }
 
          //Optionally, you can redirect or abort with a 403 status code
-        return redirect()->route('home')->with('error', 'You do not have admin access.');
+        return redirect()->route('dashboard')->with('error', 'You do not have admin access.');
          //or
-         abort(403, 'Unauthorized action.');
+         //abort(403, 'Unauthorized action.');
     }
 }
