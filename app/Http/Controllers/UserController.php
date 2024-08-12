@@ -1,6 +1,6 @@
 <?php
 
-// app/Http/Controllers/UserController.php
+ //app/Http/Controllers/UserController.php
 
 namespace App\Http\Controllers;
 
@@ -14,9 +14,8 @@ class UserController extends Controller
         $users = User::all();
         return view('users.index', compact('users'));
     }
-
     public function edit($id)
-    {
+    { 
         $user = User::findOrFail($id);
         return view('users.edit', compact('user'));
     }
