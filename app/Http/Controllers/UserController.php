@@ -26,4 +26,11 @@ class UserController extends Controller
         $user->update($request->only(['name', 'email']));
         return redirect()->route('users.index')->with('success', 'User updated successfully.');
     }
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id); // Find the user by ID
+        $user->delete(); // Delete the user
+
+        return redirect()->route('users.index')->with('success', 'User deleted successfully.'); // Redirect back to the user list
+    }
 }
