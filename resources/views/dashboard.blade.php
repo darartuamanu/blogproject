@@ -21,6 +21,7 @@
                 <tr>
                     <th>post_id</th>
                     <th>Title</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
