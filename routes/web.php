@@ -106,7 +106,19 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 
   Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
   Route::post('/users/{id}', [UserController::class, 'update'])->name('users.update');
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+  Route::delete('/users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
+
+
+});
+Route::middleware(['role:admin'])->group(function () {
+ 
+});
+
+Route::middleware(['permission:edit posts'])->group(function () {
+});
+Route::middleware(['permission:subscriber'])->group(function(){
 
 });
 

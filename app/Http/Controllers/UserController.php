@@ -10,10 +10,12 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function index()
-    {
-        $users = User::where('is_admin', false)->get();
-        return view('users.index', compact('users'));
-    }
+{
+    
+    $users = User::where('is_admin', false)->with('roles')->get();
+    return view('users.index', compact('users'));
+}
+
 
     public function edit($id)
     {
@@ -51,5 +53,14 @@ class UserController extends Controller
 
         $user->delete();
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+    }
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+
+        // Retrieve the roles for the user
+        $roles = $user->roles->pluck('name');
+
+        return view('users.show', compact('user', 'roles'));
     }
 }
