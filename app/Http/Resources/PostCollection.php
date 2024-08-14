@@ -1,7 +1,5 @@
 <?php
 
-// app/Http/Resources/PostCollection.php
-
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\ResourceCollection;
@@ -16,23 +14,18 @@ class PostCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        // Check for a specific query parameter to determine if it's a detail page request
-        $isDetailPage = $request->query('detail') === 'true';
-
         return [
-            'data' => $this->collection->transform(function ($post) use ($isDetailPage) {
+            'data' => $this->collection->map(function ($post) {
                 return [
                     'id' => $post->id,
                     'title' => $post->title,
-                    'description' => $isDetailPage ? $post->description : substr($post->description, 0, 400) . (strlen($post->description) > 400 ? '...' : ''),
+                    'excerpt' => $post->excerpt, // You might want to use a method to limit text length
                     'created_at' => $post->created_at->toDateString(),
-                    
                 ];
             }),
-            'meta' => [
-                'total' => $this->collection->count(),
+            'links' => [
+                'self' => url()->current(),
             ],
         ];
     }
 }
-

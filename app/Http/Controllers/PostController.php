@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Notifications\NewPostNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Models\User;
-
+use App\Http\Resources\PostCollection;
+use App\Http\Requests\StorePostRequest;
 
 
 class PostController extends Controller
@@ -30,7 +31,8 @@ class PostController extends Controller
         $posts = Post::where('status', 'published')
             ->orderBy('created_at', 'desc')
             ->get();
-
+    
+        // Wrap the collection with PostCollection
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -41,15 +43,9 @@ class PostController extends Controller
     }
 
     // Store method to handle post creation
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-        // Validations
-        $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'status' => 'required|in:draft,published,archived',
-        ]);
+        
     
         // Handle image upload
         $file = $request->file('image');
@@ -68,9 +64,9 @@ class PostController extends Controller
         Notification::send($users, new NewPostNotification($post));
     
         // Optionally, send an email to a specific address
-       // Mail::to('darartuamanu6@gmail.com')->send(new PostPublished($post));
+        Mail::to('darartuamanu6@gmail.com')->send(new PostPublished($post));
     
-        //return redirect()->route('posts.index')->with('success', 'Post published and notifications sent.');
+        return redirect()->route('posts.index')->with('success', 'Post published and notifications sent.');
     }
     
     public function publishPost(Request $request)
@@ -82,6 +78,13 @@ class PostController extends Controller
         // Send email notification
         Mail::to('darartuamanu6@gmail.com')->send(new PostPublished($post));
 
-        return redirect()->route('posts.index')->with('success', 'Post published and notification sent.');
+    return redirect()->route('posts.index')->with('success', 'Post published and notification sent.');
     }
+
+public function show($id)
+{
+    $post = Post::findOrFail($id);
+
+    return view('posts.show', ['post' => $post]);
+}
 }
